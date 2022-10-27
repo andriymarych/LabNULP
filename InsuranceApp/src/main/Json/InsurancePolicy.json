@@ -1,0 +1,74 @@
+[
+  {
+    "date": "2022-10-21",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5001,
+    "insuranceCompany": 700100,
+    "policyHolder": 1004
+  },
+  {
+    "date": "2022-10-21",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5002,
+    "insuranceCompany": 700100,
+    "policyHolder": 1004
+  },
+  {
+    "date": "2022-10-21",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5003,
+    "insuranceCompany": 700100,
+    "policyHolder": 1003
+  },
+  {
+    "date": "2022-10-21",
+    "compulsory": false,
+    "insurer": 902,
+    "policyNo": 5004,
+    "insuranceCompany": 700100,
+    "policyHolder": 1002
+  },
+  {
+    "date": "2022-10-21",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5005,
+    "insuranceCompany": 700100,
+    "policyHolder": 1001
+  },
+  {
+    "date": "2022-10-23",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5006,
+    "insuranceCompany": 700100,
+    "policyHolder": 1007
+  },
+  {
+    "date": "2022-10-23",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5007,
+    "insuranceCompany": 700100,
+    "policyHolder": 1007
+  },
+  {
+    "date": "2022-10-26",
+    "compulsory": true,
+    "insurer": 901,
+    "policyNo": 5008,
+    "insuranceCompany": 700100,
+    "policyHolder": 1002
+  },
+  {
+    "date": "2022-10-27",
+    "compulsory": true,
+    "insurer": 903,
+    "policyNo": 5009,
+    "insuranceCompany": 800200,
+    "policyHolder": 1010
+  }
+]

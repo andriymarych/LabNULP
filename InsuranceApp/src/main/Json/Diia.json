@@ -1,0 +1,26 @@
+[
+  {
+    "documentNo": 356421,
+    "diiaSign": "1111",
+    "firstname": "Сергій",
+    "lastName": "Мілованов",
+    "birthDate": "1980-08-16",
+    "ITN": 861356
+  },
+  {
+    "documentNo": 346153,
+    "diiaSign": "1111",
+    "firstname": "Ірина",
+    "lastName": "Майданська",
+    "birthDate": "2004-09-20",
+    "ITN": 861052
+  },
+  {
+    "documentNo": 306363,
+    "diiaSign": "1111",
+    "firstname": "Тарас",
+    "lastName": "Кицмей",
+    "birthDate": "1966-08-02",
+    "ITN": 868531
+  }
+]

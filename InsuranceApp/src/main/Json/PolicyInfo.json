@@ -1,0 +1,104 @@
+[
+  {
+    "firstName": "Ірина",
+    "lastName": "Майданська",
+    "infoType": 1,
+    "address": "м.Київ",
+    "policyNo": 55001,
+    "riskPercentage": 0.07,
+    "insuredSum": 7000,
+    "birthDate": "2004-09-20",
+    "insurancePayment": 490
+  },
+  {
+    "firstName": "Андрій",
+    "lastName": "Марич",
+    "infoType": 1,
+    "address": "Київ",
+    "policyNo": 631111,
+    "riskPercentage": 0.07,
+    "insuredSum": 10000,
+    "birthDate": "2003-05-25",
+    "insurancePayment": 700
+  },
+  {
+    "firstName": "Сергій",
+    "lastName": "Нашкерський",
+    "infoType": 1,
+    "address": "м.Київ, вул Лісна 13",
+    "policyNo": 64001,
+    "riskPercentage": 0.3,
+    "insuredSum": 30000,
+    "birthDate": "1995-05-30",
+    "insurancePayment": 9000
+  },
+  {
+    "firstName": "Петро",
+    "lastName": "Могила",
+    "infoType": 1,
+    "address": "м.Івано-Франківськ",
+    "policyNo": 674911,
+    "riskPercentage": 0.25,
+    "insuredSum": 25000,
+    "birthDate": "2000-08-30",
+    "insurancePayment": 6250
+  },
+  {
+    "firstName": "Михайло",
+    "lastName": "Микитюк",
+    "infoType": 1,
+    "address": "м.Коломия",
+    "policyNo": 860021,
+    "riskPercentage": 0.15,
+    "insuredSum": 35000,
+    "birthDate": "2004-08-29",
+    "insurancePayment": 5250
+  },
+  {
+    "firstName": "Андрій",
+    "lastName": "Марич",
+    "infoType": 3,
+    "carBrand": "BMW",
+    "licensePlateNumber": "AT7777AT",
+    "policyNo": 5006,
+    "riskPercentage": 0.03,
+    "insuredSum": 100000,
+    "insurancePayment": 7500,
+    "carModel": "S-class"
+  },
+  {
+    "firstName": "Сергій",
+    "lastName": "Петренко",
+    "infoType": 3,
+    "carBrand": "BMW",
+    "licensePlateNumber": "AT7777AT",
+    "policyNo": 5007,
+    "riskPercentage": 0.03,
+    "insuredSum": 250000,
+    "insurancePayment": 7500,
+    "carModel": "5-Series"
+  },
+  {
+    "firstName": "Андрій",
+    "lastName": "Марич",
+    "infoType": 1,
+    "address": "Івано-Франківськ",
+    "policyNo": 5008,
+    "riskPercentage": 0.06,
+    "insuredSum": 20000,
+    "birthDate": "2000-05-25",
+    "insurancePayment": 1200
+  },
+  {
+    "firstName": "Тарас",
+    "lastName": "Кицмей",
+    "infoType": 3,
+    "carBrand": "BMW",
+    "licensePlateNumber": "AT5445AT",
+    "policyNo": 5009,
+    "riskPercentage": 0.03,
+    "insuredSum": 250000,
+    "insurancePayment": 7500,
+    "carModel": "5-Series"
+  }
+]

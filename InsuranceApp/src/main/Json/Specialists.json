@@ -1,0 +1,29 @@
+[
+  {
+    "firstName": "Сергій",
+    "lastName": "Кучера",
+    "password": "1111",
+    "userRole": 1,
+    "login": "admin1",
+    "userId": 901,
+    "insuranceCompanyId": 700100
+  },
+  {
+    "firstName": "Іван",
+    "lastName": "Зорій",
+    "password": "1111",
+    "userRole": 1,
+    "login": "admin2",
+    "userId": 902,
+    "insuranceCompanyId": 700100
+  },
+  {
+    "firstName": "Дмитро",
+    "lastName": "Залуцький",
+    "password": "1111",
+    "userRole": 1,
+    "login": "admin3",
+    "userId": 903,
+    "insuranceCompanyId": 800200
+  }
+]

@@ -1,0 +1,38 @@
+[
+  {
+    "date": "2022-10-23",
+    "derivativeNo": 1001,
+    "insurer": 902,
+    "price": 38625,
+    "policyList": [
+      5006,
+      5007
+    ],
+    "derivativeHolder": 1007,
+    "insuranceCompanyId": 700100
+  },
+  {
+    "date": "2022-10-26",
+    "derivativeNo": 1002,
+    "insurer": 901,
+    "price": 1225.7,
+    "policyList": [
+      5002,
+      5001
+    ],
+    "derivativeHolder": 1004,
+    "insuranceCompanyId": 700100
+  },
+  {
+    "date": "2022-10-27",
+    "derivativeNo": 1003,
+    "insurer": 901,
+    "price": 15450,
+    "policyList": [
+      5006,
+      5007
+    ],
+    "derivativeHolder": 1007,
+    "insuranceCompanyId": 700100
+  }
+]
