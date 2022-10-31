@@ -66,7 +66,8 @@ public class CreatePersonalCommand implements MenuItem {
                 .setFirstName(firstName)
                 .setLastName(lastName)
                 .setBirthDate(birthDate)
-                .setAddress(address).setRiskPercentage(riskPercentage)
+                .setAddress(address)
+                .setRiskPercentage(riskPercentage)
                 .setSumInsured(insuredSum)
                 .setInsurancePayment(insuredPayment)
                 .setInfoType(1);

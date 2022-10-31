@@ -100,5 +100,17 @@
     "insuredSum": 250000,
     "insurancePayment": 7500,
     "carModel": "5-Series"
+  },
+  {
+    "firstName": "Ірина",
+    "lastName": "Майданська",
+    "infoType": 2,
+    "companyName": "Приватна клініка \"Охмадит\"",
+    "policyNo": 5010,
+    "professionalActivity": "Медицина",
+    "position": "Хірург",
+    "riskPercentage": 0.1,
+    "insuredSum": 110000,
+    "insurancePayment": 11000
   }
 ]

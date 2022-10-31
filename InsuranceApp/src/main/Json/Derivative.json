@@ -22,17 +22,5 @@
     ],
     "derivativeHolder": 1004,
     "insuranceCompanyId": 700100
-  },
-  {
-    "date": "2022-10-27",
-    "derivativeNo": 1003,
-    "insurer": 901,
-    "price": 15450,
-    "policyList": [
-      5006,
-      5007
-    ],
-    "derivativeHolder": 1007,
-    "insuranceCompanyId": 700100
   }
 ]

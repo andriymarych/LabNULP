@@ -94,11 +94,13 @@ public class DerivativeScanner {
         Map<Integer, InsurancePolicy> insurancePolicies;
         ArrayList<Integer> policyNoList;
         insurancePolicies = derivativeHolder.getInsurancePolicyList();
-        policyNoList = derivativeHolder.getPolicyNoList();
+        //policyNoList = derivativeHolder.getPolicyNoList();
         System.out.println("\nСписок Cтрахових договорів:");
-        for (int i = 0; i < insurancePolicies.size(); i++) {
-            System.out.println(insurancePolicies.get(policyNoList.get(i)));
+        var entrySet = insurancePolicies.entrySet();
+        for (var entry : entrySet) {
+            System.out.println(entry.getValue());
             System.out.println();
+
         }
     }
 }

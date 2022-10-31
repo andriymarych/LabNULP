@@ -22,7 +22,7 @@ public class DerivativeMenu implements MenuItem {
         if (user instanceof Customer) {
             menuItems.put("create der", new CreateDerCommand());
             menuItems.put("show der", new ShowDerCommand());
-            menuItems.put("delete der", new DeleteDerCommand());
+            menuItems.put("del der", new DeleteDerCommand());
             menuItems.put("exit", new MainMenuCommand());
         } else if (user instanceof InsuranceSpecialist) {
             menuItems.put("create der", new CreateDerCommand());

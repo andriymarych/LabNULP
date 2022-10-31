@@ -70,8 +70,10 @@ public class CreateLiabilityCommand implements MenuItem {
                 .setProfessionalActivity(professionalActivity)
                 .setCompanyName(companyName)
                 .setPosition(position)
+                .setRiskPercentage(riskPercentage)
                 .setSumInsured(insuredSum)
                 .setInsurancePayment(insuredPayment)
-                .setInfoType(2);
+                .setInfoType(2)
+                ;
     }
 }

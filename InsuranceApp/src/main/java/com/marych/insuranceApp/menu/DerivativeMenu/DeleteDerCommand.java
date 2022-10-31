@@ -7,6 +7,7 @@ import com.marych.insuranceApp.insurance.derivative.Derivative;
 import com.marych.insuranceApp.menu.InsuranceMenu.InsurancePolicyMenu;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import static com.marych.insuranceApp.Main.user;
@@ -30,25 +31,27 @@ public class DeleteDerCommand implements MenuItem {
         System.out.println("Дериватив № " + derivativeNo + " успішно видалено.");
     }
     private boolean deleteDerivative(int derivativeNo) {
-        Derivative derivative = null;
+        Derivative derivative ;
+        Map<Integer,Derivative> derivativeMap ;
         if (user instanceof Customer customer) {
-            if (customer.getDerivativeNoList().contains(derivativeNo)) {
+            derivativeMap = customer.getDerivativeList();
+            if (derivativeMap.containsKey(derivativeNo)) {
                 derivative = customer.getDerivativeList().get(derivativeNo);
+                JsonScanner.derivativeDeletion(derivative,derivative.getDerivativeHolder().getUserId());
             } else {
                 System.out.println("Деривативу № " + derivativeNo + " не існує.");
                 return false;
             }
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
-            if (insuranceSpecialist.getDerivativeNoList().contains(derivativeNo)) {
+            derivativeMap = insuranceSpecialist.getDerivativeList();
+            if (derivativeMap.containsKey(derivativeNo)) {
                 derivative = insuranceSpecialist.getDerivativeList().get(derivativeNo);
+                JsonScanner.derivativeDeletion(derivative,derivative.getDerivativeHolder().getUserId());
             } else {
                 System.out.println("Деривативу № " + derivativeNo + " не існує.");
                 return false;
             }
         }
-        assert derivative != null;
-        JsonScanner.derivativeDeletion(derivative,derivative.getDerivativeHolder().getUserId());
         return true;
-
     }
 }

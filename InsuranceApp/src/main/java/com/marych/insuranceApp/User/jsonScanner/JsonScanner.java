@@ -185,10 +185,10 @@ public class JsonScanner {
     }
 
     public static void addDerivative(Derivative derivative) throws IOException {
+        var keySet = derivative.getPolicyList().keySet();
         ArrayList<Integer> policyNoList = new ArrayList<>();
-        for (int i = 0; i < derivative.getPolicyList().size(); i++) {
-            int derivativeNo = derivative.getPolicyNoList().get(i);
-            policyNoList.add(derivative.getPolicyList().get(derivativeNo).getPolicyNo());
+        for (var key : keySet) {
+            policyNoList.add(derivative.getPolicyList().get(key).getPolicyNo());
         }
         String derivativePathStr = "/Users/andriymarych/Desktop/Прикладне Програмування/Code/InsuranceApp/src/main/Json/Derivative.json";
         Path derivativePath = Path.of(derivativePathStr);

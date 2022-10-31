@@ -22,20 +22,26 @@ public class ShowAllDerivativesCommand implements MenuItem {
     }
     public static void showDerivativeList() {
         Map<Integer, Derivative> derivativeList = null;
-        ArrayList<Integer> derivativeNoList = null;
+        //ArrayList<Integer> derivativeNoList = null;
         if (user instanceof Customer customer) {
             derivativeList = customer.getDerivativeList();
-            derivativeNoList = customer.getDerivativeNoList();
+            //derivativeNoList = customer.getDerivativeNoList();
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
             derivativeList = insuranceSpecialist.getDerivativeList();
-            derivativeNoList = insuranceSpecialist.getDerivativeNoList();
+            //derivativeNoList = insuranceSpecialist.getDerivativeNoList();
         }
         if(derivativeList.size() != 0) {
             System.out.println("\nСписок Деривативів:\n");
-            for (int i = 0; i < derivativeList.size(); i++) {
+            var entrySet = derivativeList.entrySet();
+            for (var entry : entrySet) {
+                entry.getValue().showDerivative();
+                System.out.println("-".repeat(60));
+
+            }
+            /*for (int i = 0; i < derivativeList.size(); i++) {
                 derivativeList.get(derivativeNoList.get(i)).showDerivative();
                 System.out.println("-".repeat(60));
-            }
+            }*/
         }else{
             System.out.println("\nУ вас ще немає створених деривативів.\n");
         }

@@ -22,17 +22,23 @@ public class ShowInsCommand implements MenuItem {
     private void printPolicyList(){
         if (user instanceof Customer customer) {
             insurancePolicies = customer.getInsurancePolicyList();
-            policyNoList = customer.getPolicyNoList();
+            //policyNoList = customer.getPolicyNoList();
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
             insurancePolicies = insuranceSpecialist.getInsurancePolicyList();
-            policyNoList = insuranceSpecialist.getPolicyNoList();
+            //policyNoList = insuranceSpecialist.getPolicyNoList();
         }
         if(insurancePolicies.size() != 0) {
             System.out.println("\nСписок страхових договорів:\n");
-            for (int i = 0; i < insurancePolicies.size(); i++) {
+            var entrySet = insurancePolicies.entrySet();
+            for (var entry : entrySet) {
+                System.out.println(entry.getValue());
+                System.out.println();
+
+            }
+           /* for (int i = 0; i < insurancePolicies.size(); i++) {
                 System.out.println(insurancePolicies.get(policyNoList.get(i)));
                 System.out.println();
-            }
+            }*/
         }else{
             System.out.println("\nУ вас ще немає створених страхових договорів");
         }

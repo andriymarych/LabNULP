@@ -15,8 +15,6 @@ public class Derivative {
     private int derivativeNo;
     @JsonIgnore
     private Map<Integer,InsurancePolicy> policyList;
-    @JsonProperty("policyNoList")
-    private ArrayList<Integer> policyNoList;
     @JsonProperty("price")
     private double price;
     @JsonProperty("derivativeHolder")
@@ -33,7 +31,6 @@ public class Derivative {
         this.derivativeHolder = derivativeHolder;
         this.insurer = insuranceSpecialist;
         this.policyList = new HashMap<>();
-        this.policyNoList = new ArrayList<>();
         this.date =   LocalDate.now().toString();
     }
 
@@ -50,8 +47,6 @@ public class Derivative {
 
     public void addPolicy(InsurancePolicy insurancePolicy) {
         policyList.put(insurancePolicy.getPolicyNo(),insurancePolicy);
-        policyNoList.add(insurancePolicy.getPolicyNo());
-
     }
 
 
@@ -68,10 +63,6 @@ public class Derivative {
     public Derivative setDate(String date) {
         this.date = date;
         return this;
-    }
-
-    public ArrayList<Integer> getPolicyNoList() {
-        return policyNoList;
     }
 
     public int getDerivativeNo() {
@@ -108,9 +99,9 @@ public class Derivative {
         System.out.println("Власник : " + derivativeHolder);
         System.out.println("Сумарна вартість деревативу : " + price);
         System.out.println("Перелік страхових договорів : \n");
-        for(int i = 0; i < policyList.size(); i++){
-            int policyNo = policyNoList.get(i);
-            System.out.println(policyList.get(policyNo));
+        var entrySet = policyList.entrySet();
+        for (var entry : entrySet){
+            System.out.println(entry.getValue());
             System.out.println();
         }
         System.out.println("Дата створення деривативу: " + " ".repeat(20) + date);

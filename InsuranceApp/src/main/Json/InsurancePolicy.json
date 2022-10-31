@@ -70,5 +70,13 @@
     "policyNo": 5009,
     "insuranceCompany": 800200,
     "policyHolder": 1010
+  },
+  {
+    "date": "2022-10-31",
+    "compulsory": true,
+    "insurer": 903,
+    "policyNo": 5012,
+    "insuranceCompany": 800200,
+    "policyHolder": 1007
   }
 ]

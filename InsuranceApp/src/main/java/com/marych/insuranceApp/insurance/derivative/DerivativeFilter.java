@@ -38,16 +38,17 @@ public class DerivativeFilter {
         double sumInsured;
         int startSumInsured;
         int endSumInsured;
-        ArrayList<Integer> policyNoList;
+        Map<Integer,InsurancePolicy> policyListMap;
         ArrayList<InsurancePolicy> policyList = new ArrayList<>();
         ArrayList<InsurancePolicy> filteredPolicyList = new ArrayList<>();
-        policyNoList = derivative.getPolicyNoList();
+        policyListMap = derivative.getPolicyList();
         System.out.println("Введіть діапазон значень страхових сум зобовʼязань у деривативі:");
         System.out.println("Від :");
         startSumInsured = in.nextInt();
         System.out.println("До :");
         endSumInsured = in.nextInt();
-        for (int policyNo : policyNoList) {
+        var keySet = policyListMap.keySet();
+        for (var policyNo : keySet) {
             policyList.add(derivative.getPolicyList().get(policyNo));
         }
         for (InsurancePolicy policy : policyList) {

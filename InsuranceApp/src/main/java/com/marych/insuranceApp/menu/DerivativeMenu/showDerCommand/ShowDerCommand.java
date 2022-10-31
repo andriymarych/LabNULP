@@ -17,11 +17,11 @@ public class ShowDerCommand implements MenuItem {
     public ShowDerCommand() {
         menuItems = new LinkedHashMap<>();
         if (user instanceof Customer) {
-            menuItems.put("show all der", new ShowAllDerivativesCommand());
+            menuItems.put("show all", new ShowAllDerivativesCommand());
             menuItems.put("show der", new ShowFilteredDerivativeCommand());
             menuItems.put("exit", new DerivativeMenuCommand());
         } else if (user instanceof InsuranceSpecialist) {
-            menuItems.put("show all der", new ShowAllDerivativesCommand());
+            menuItems.put("show all", new ShowAllDerivativesCommand());
             menuItems.put("show der", new ShowFilteredDerivativeCommand());
             menuItems.put("exit", new DerivativeMenuCommand());
         }
@@ -32,11 +32,11 @@ public class ShowDerCommand implements MenuItem {
         System.out.println("*".repeat(60));
         System.out.println();
         if (user instanceof Customer) {
-            System.out.println("show all der - переглянути усі створені деривативи.");
+            System.out.println("show all  - переглянути усі створені деривативи.");
             System.out.println("show der - відфільтрувати та переглянути деривативи.");
             System.out.println("exit - повернутися у меню керування деривативами.");
         } else if (user instanceof InsuranceSpecialist) {
-            System.out.println("show all der - переглянути усі створені деривативи.");
+            System.out.println("show all  - переглянути усі створені деривативи.");
             System.out.println("show der - відфільтрувати та переглянути деривативи.");
             System.out.println("exit - повернутися у меню керування деривативами.");
         }

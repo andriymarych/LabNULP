@@ -6,6 +6,7 @@ import com.marych.insuranceApp.User.jsonScanner.JsonScanner;
 import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
 
+import java.util.Map;
 import java.util.Scanner;
 
 import static com.marych.insuranceApp.Main.user;
@@ -30,7 +31,8 @@ public class DeleteInsCommand implements MenuItem {
 
     private boolean deleteInsurancePolicy(int policyNo) {
         if (user instanceof Customer customer) {
-            if (customer.getPolicyNoList().contains(policyNo)) {
+            Map<Integer,InsurancePolicy> insurancePolicies = customer.getInsurancePolicyList();
+            if (insurancePolicies.containsKey(policyNo)) {
                 InsurancePolicy insurancePolicy = customer.getInsurancePolicyList().get(policyNo);
                 JsonScanner.insuranceDeletion(insurancePolicy);
                 return true;
@@ -38,7 +40,8 @@ public class DeleteInsCommand implements MenuItem {
                 System.out.println("Страхового договору № " + policyNo + " не існує.");
             }
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
-            if (insuranceSpecialist.getPolicyNoList().contains(policyNo)) {
+            Map<Integer,InsurancePolicy> insurancePolicies = insuranceSpecialist.getInsurancePolicyList();
+            if (insurancePolicies.containsKey(policyNo)) {
                 InsurancePolicy insurancePolicy = insuranceSpecialist.getInsurancePolicyList().get(policyNo);
                 JsonScanner.insuranceDeletion(insurancePolicy);
                 return true;

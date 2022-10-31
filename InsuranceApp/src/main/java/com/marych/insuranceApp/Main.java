@@ -10,6 +10,8 @@ import com.marych.insuranceApp.menu.LoginMenu.LoginMenu;
 
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class Main {
@@ -20,7 +22,6 @@ public class Main {
 
 
     public static void main(String[] args) throws IOException {
-
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.execute();
     }
