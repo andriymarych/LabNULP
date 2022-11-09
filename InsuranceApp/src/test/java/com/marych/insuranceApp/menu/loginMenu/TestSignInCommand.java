@@ -1,7 +1,9 @@
 package com.marych.insuranceApp.menu.loginMenu;
 
+import com.marych.insuranceApp.exceptions.UserWrongLoginException;
 import com.marych.insuranceApp.menu.commonCommands.ExitCommand;
 import com.marych.insuranceApp.menu.mainMenu.MainMenu;
+import com.marych.insuranceApp.tools.LogStatus;
 import com.marych.insuranceApp.user.Customer;
 import com.marych.insuranceApp.user.UserList;
 import org.junit.Before;
@@ -35,17 +37,21 @@ public class TestSignInCommand {
     }
 
     @Test
-    public void testWrongLogin(){
-        String wrongLogin = "log";
-        String password = "password";
-        String input = "log\n password\nlog\n password\nlog\n password\nlog\n password";
+    public void testWrongLogin() {
+        Customer customer = new Customer(1111,"log","2222");
+        customer.setLogStatus(LogStatus.PASSWORD);
+        String input = "log\n 1111\n1111\n1111";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
         signInCommand.setUserList(userList);
-        assertEquals(0,signInCommand.signIn());
+        assertThrows(UserWrongLoginException.class,
+                ()->{
+            when(userList.login("log","1111")).thenReturn(customer);
+            signInCommand.signIn();
+                });
     }
     @Test
-    public void testCorrectLogin(){
+    public void testCorrectLogin() throws UserWrongLoginException {
         String wrongLogin = "log";
         String password = "password";
         String input = "log\n password";
@@ -58,7 +64,7 @@ public class TestSignInCommand {
 
 
     @Test
-    public void testExecutionMenuWhenCorrectLogin() throws IOException {
+    public void testExecutionMenuWhenCorrectLogin() throws IOException, UserWrongLoginException {
         SignInCommand signInCommandSpy = spy(new SignInCommand());
         signInCommand.setUserList(userList);
         doReturn(1).when(signInCommandSpy).signIn();

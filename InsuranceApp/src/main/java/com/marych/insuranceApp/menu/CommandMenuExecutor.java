@@ -1,5 +1,6 @@
 package com.marych.insuranceApp.menu;
 
+import com.marych.insuranceApp.exceptions.UserWrongLoginException;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
 
 import java.io.IOException;
@@ -22,6 +23,8 @@ public class CommandMenuExecutor {
                 }).execute();
             }catch (IOException e){
                 e.printStackTrace();
+            } catch (UserWrongLoginException e) {
+                throw new RuntimeException(e);
             }
         }while(!menuItems.containsKey(command));
         return true;

@@ -52,3 +52,5 @@
 2022-11-09 20:15:52 INFO  : User id1 is logged in
 2022-11-09 20:15:59 INFO  : User id0 created insurance policy No1005
 2022-11-09 20:16:02 INFO  : User id0 created insurance policy No1005
+2022-11-09 22:18:55 ERROR : User id1007 entered the wrong password three times
+2022-11-09 22:20:59 ERROR : User id1007 entered the wrong password three times

@@ -2,7 +2,6 @@ package com.marych.insuranceApp;
 
 
 import com.marych.insuranceApp.diiaGov.DiiaGovList;
-import com.marych.insuranceApp.tools.EmailErrorSender;
 import com.marych.insuranceApp.user.User;
 import com.marych.insuranceApp.user.UserList;
 import com.marych.insuranceApp.insurance.InsuranceCompanyList;
@@ -23,7 +22,5 @@ public class Main {
     public static void main(String[] args) throws IOException {
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.execute();
-       /* EmailErrorSender emailErrorSender = new EmailErrorSender();
-        emailErrorSender.send("Andrew");*/
     }
 }
