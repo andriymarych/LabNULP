@@ -1,13 +1,13 @@
-package com.marych.insuranceApp.menu.LoginMenu;
+package com.marych.insuranceApp.menu.loginMenu;
 
-import com.marych.insuranceApp.User.jsonScanner.JsonScanner;
+import com.marych.insuranceApp.menu.CommandMenuExecutor;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.CommandMenuExecutor;
+import com.marych.insuranceApp.scanners.jsonScanner.JsonScanner;
+
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 public class LoginMenu {
     private final Map<String, MenuItem> menuItems;
@@ -20,9 +20,10 @@ public class LoginMenu {
 
     }
 
-    public void execute() throws IOException {
+    public boolean execute() throws IOException {
         showMenuInfo();
         CommandMenuExecutor.execute(menuItems);
+        return true;
     }
     private void showMenuInfo(){
         System.out.println("Welcome to Insurance App");

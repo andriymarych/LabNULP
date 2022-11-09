@@ -1,17 +1,17 @@
-package com.marych.insuranceApp.menu.DerivativeMenu;
+package com.marych.insuranceApp.menu.derivativeMenu;
 
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
-import com.marych.insuranceApp.menu.DerivativeMenu.showDerCommand.ShowDerCommand;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+import com.marych.insuranceApp.menu.derivativeMenu.showDerCommand.ShowDerCommand;
 import com.marych.insuranceApp.menu.commonCommands.MainMenuCommand;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.CommandMenuExecutor;
+import com.marych.insuranceApp.menu.CommandMenuExecutor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 
-import static com.marych.insuranceApp.Main.*;
+import static com.marych.insuranceApp.Main.user;
 
 public class DerivativeMenu implements MenuItem {
 
@@ -28,16 +28,16 @@ public class DerivativeMenu implements MenuItem {
             menuItems.put("create der", new CreateDerCommand());
             menuItems.put("show der", new ShowDerCommand());
             menuItems.put("del der", new DeleteDerCommand());
-            menuItems.put("conf der", new ConfirmationCommand());
             menuItems.put("exit", new MainMenuCommand());
         }
 
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         printMenuInfo();
         CommandMenuExecutor.execute(menuItems);
+        return true;
     }
     private void printMenuInfo(){
         System.out.println("*".repeat(60));

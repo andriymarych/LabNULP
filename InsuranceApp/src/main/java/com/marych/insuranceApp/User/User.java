@@ -1,8 +1,13 @@
-package com.marych.insuranceApp.User;
+package com.marych.insuranceApp.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.marych.insuranceApp.tools.LogStatus;
+
 
 public abstract class User {
+    @JsonIgnore
+    LogStatus logStatus;
     @JsonProperty("userId")
     private int userId;
     @JsonProperty("userRole")
@@ -12,26 +17,22 @@ public abstract class User {
     @JsonProperty("login")
     private String login;
 
+
+    public User() {
+
+    }
+
+
     public String getPassword() {
         return password;
     }
 
-
+    public void setLogStatus(LogStatus logStatus) {
+        this.logStatus = logStatus;
+    }
 
     public void setUserId(int userId) {
         this.userId = userId;
-    }
-
-    public void setUserRole(int userRole) {
-        this.userRole = userRole;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 
@@ -39,8 +40,9 @@ public abstract class User {
         this.login = login;
         this.password = password;
     }
-    public User(){
 
+    public void setUserRole(int userRole) {
+        this.userRole = userRole;
     }
 
     public int getUserRole() {
@@ -49,9 +51,12 @@ public abstract class User {
     public String getLogin(){
         return login;
     }
-    abstract String getFirstName();
+    public abstract String getFirstName();
     public boolean verifyPassword(String password){
         return this.password.equals(password);
+    }
+    public LogStatus getLogStatus(){
+        return logStatus;
     }
 
     public int getUserId() {

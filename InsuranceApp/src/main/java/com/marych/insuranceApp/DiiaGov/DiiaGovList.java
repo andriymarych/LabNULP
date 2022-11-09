@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.DiiaGov;
+package com.marych.insuranceApp.diiaGov;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,9 +10,7 @@ public class DiiaGovList {
     public DiiaGovList() {
         diiaGovList = new LinkedHashMap<>();
 
-        /*diiaGovList.put(1111,new DiiaGov(1111,1111)
-                .setFirstName("Tony").setLastName("Montana")
-                .setBirthDate("2022-05-25").setITN(5421));*/
+
     }
 
 

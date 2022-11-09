@@ -9,9 +9,8 @@ public class LicencePlateValidation {
     public static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z]{2}\\d{4}[A-Z]{2}$");
 
-    public static String validate() {
+    public static String validate(Scanner in) {
         String licensePlate ;
-        Scanner in = new Scanner(System.in);
         System.out.println("Державний номерний знак транспортного засобу (використовувати англійські літери) :");
         for (int i = 3; i > 0; i--) {
             licensePlate = in.next();

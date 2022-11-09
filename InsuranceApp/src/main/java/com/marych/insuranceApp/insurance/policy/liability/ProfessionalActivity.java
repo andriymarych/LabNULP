@@ -2,7 +2,6 @@ package com.marych.insuranceApp.insurance.policy.liability;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.marych.insuranceApp.insurance.policy.PolicyInfo;
-import com.marych.insuranceApp.insurance.policy.personal.LifeInsuranceInfo;
 
 public class ProfessionalActivity extends PolicyInfo {
 

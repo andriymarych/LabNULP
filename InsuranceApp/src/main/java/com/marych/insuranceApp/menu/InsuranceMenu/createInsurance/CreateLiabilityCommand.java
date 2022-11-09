@@ -1,30 +1,40 @@
-package com.marych.insuranceApp.menu.InsuranceMenu.createInsurance;
+package com.marych.insuranceApp.menu.insuranceMenu.createInsurance;
 
 
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
+import com.marych.insuranceApp.Main;
 import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
 import com.marych.insuranceApp.insurance.policy.liability.ProfessionalActivity;
-import com.marych.insuranceApp.menu.InsuranceMenu.InsurancePolicyMenu;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.InsuranceScanner;
+import com.marych.insuranceApp.menu.insuranceMenu.InsurancePolicyMenu;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.scanners.InsuranceScanner;
+import com.marych.insuranceApp.user.User;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
-import static com.marych.insuranceApp.Main.user;
 
 public class CreateLiabilityCommand implements MenuItem {
     InsurancePolicy insurancePolicy;
 
+    InsurancePolicyMenu insurancePolicyMenu;
+    User user ;
+    InsuranceScanner insuranceScanner;
+    CreateInsCommand createInsCommand;
     @Override
-    public void execute() throws IOException {
+    public boolean execute() throws IOException {
+        user = getUser();
+        insurancePolicyMenu = getInsurancePolicyMenu();
+        insuranceScanner = getInsuranceScanner();
+        createInsCommand = getCreateInsCommand();
         createLiabilityPolicy();
-        InsurancePolicyMenu insurancePolicyMenu = new InsurancePolicyMenu();
         insurancePolicyMenu.execute();
+        return true;
     }
     private void createLiabilityPolicy() throws IOException {
-        InsuranceScanner insuranceScanner = new InsuranceScanner();
         if (user instanceof Customer customer) {
             insurancePolicy = insuranceScanner.createInsurancePolicy(customer);
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
@@ -33,7 +43,7 @@ public class CreateLiabilityCommand implements MenuItem {
         if (insurancePolicy != null) {
             insurancePolicy.setPolicyInfo(createProfessionalActivityInfo(insurancePolicy.getPolicyNo()));
             System.out.println(insurancePolicy);
-            CreateInsCommand.addData(insurancePolicy);
+            createInsCommand.addData(insurancePolicy,user);
         }
     }
     private ProfessionalActivity createProfessionalActivityInfo(int policyNo) {
@@ -57,10 +67,7 @@ public class CreateLiabilityCommand implements MenuItem {
         companyName = in.nextLine();
         System.out.println("Посада : ");
         position = in.nextLine();
-        double riskPercentage = CreateInsCommand.selectRisk();
-        if (riskPercentage == 0) {
-            return null;
-        }
+        double riskPercentage = 0.1;
         System.out.println("Страхова сума: ");
         insuredSum = in.nextInt();
         insuredPayment = insuredSum * riskPercentage;
@@ -76,4 +83,34 @@ public class CreateLiabilityCommand implements MenuItem {
                 .setInfoType(2)
                 ;
     }
+    public void setInsurancePolicyMenu(InsurancePolicyMenu insurancePolicyMenu){
+        this.insurancePolicyMenu = insurancePolicyMenu;
+    }
+    public InsurancePolicyMenu getInsurancePolicyMenu(){
+        return Objects.requireNonNullElseGet(insurancePolicyMenu, InsurancePolicyMenu::new);
+    }
+
+    public void setUser(User user){
+        this.user = user;
+    }
+    public User getUser() {
+        if (Main.user != null) {
+            return Main.user;
+        } else {
+            return user;
+        }
+    }
+    public void setCreateInsCommand(CreateInsCommand createInsCommand){
+        this.createInsCommand = createInsCommand;
+    }
+    public CreateInsCommand getCreateInsCommand() {
+        return Objects.requireNonNullElseGet(createInsCommand, CreateInsCommand::new);
+    }
+    public void setInsuranceScanner(InsuranceScanner insuranceScanner){
+        this.insuranceScanner = insuranceScanner;
+    }
+    public InsuranceScanner getInsuranceScanner(){
+        return Objects.requireNonNullElseGet(insuranceScanner, InsuranceScanner::new);
+    }
+
 }

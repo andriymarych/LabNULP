@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.User;
+package com.marych.insuranceApp.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -7,6 +7,7 @@ import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Customer extends User {
     @JsonProperty("firstName")
@@ -27,30 +28,37 @@ public class Customer extends User {
     public Customer(int Id, String login, String password) {
         super(login, password);
         this.setUserId(Id);
+        this.setUserRole(0);
         insurancePolicyList = new HashMap<>();
         derivativeList = new HashMap<>();
     }
-
-    public Customer() {
+    public Customer(){
         super();
-        insurancePolicyList =  new HashMap<>();
+        insurancePolicyList = new HashMap<>();
         derivativeList = new HashMap<>();
+
     }
 
-    public void addInsurancePolicy(InsurancePolicy insurancePolicy) {
-        insurancePolicyList.put(insurancePolicy.getPolicyNo(),insurancePolicy);
+    public boolean addInsurancePolicy(InsurancePolicy insurancePolicy) {
+        if(insurancePolicy != null) {
+            insurancePolicyList.put(insurancePolicy.getPolicyNo(), insurancePolicy);
+            return true;
+        }
+        return false;
     }
 
-    public void addDerivative(Derivative derivative) {
-        derivativeList.put(derivative.getDerivativeNo(),derivative);
+    public boolean addDerivative(Derivative derivative) {
+        if(derivative != null) {
+            derivativeList.put(derivative.getDerivativeNo(), derivative);
+            return true;
+        }
+        return false;
     }
-
 
     public Customer setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
-
     public Customer setLastName(String lastName) {
         this.lastName = lastName;
         return this;
@@ -96,12 +104,28 @@ public class Customer extends User {
     public Map<Integer, InsurancePolicy> getInsurancePolicyList() {
         return insurancePolicyList;
     }
+    public InsurancePolicy getInsurancePolicy(int policyNo){
+        return insurancePolicyList.getOrDefault(policyNo, null);
 
-    public void deleteInsurancePolicy(int policyNo){
-        insurancePolicyList.remove(policyNo);
     }
-    public void deleteDerivative(int derivativeNo){
-        derivativeList.remove(derivativeNo);
+
+    public Derivative getDerivative(int derivativeNo){
+        return derivativeList.getOrDefault(derivativeNo,null);
+    }
+
+    public boolean deleteInsurancePolicy(int policyNo){
+        if(insurancePolicyList.containsKey(policyNo)) {
+            insurancePolicyList.remove(policyNo);
+            return true;
+        }
+        return false;
+    }
+    public boolean deleteDerivative(int derivativeNo){
+        if(derivativeList.containsKey(derivativeNo)) {
+            derivativeList.remove(derivativeNo);
+            return true;
+        }
+        return false;
     }
 
     public Map<Integer, Derivative> getDerivativeList() {

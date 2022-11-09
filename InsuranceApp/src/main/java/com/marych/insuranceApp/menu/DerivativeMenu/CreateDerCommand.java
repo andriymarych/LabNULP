@@ -1,29 +1,41 @@
-package com.marych.insuranceApp.menu.DerivativeMenu;
+package com.marych.insuranceApp.menu.derivativeMenu;
 
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
-import com.marych.insuranceApp.User.jsonScanner.JsonScanner;
+import com.marych.insuranceApp.Main;
+import com.marych.insuranceApp.menu.commonCommands.MenuItem;
+import com.marych.insuranceApp.tools.UserLogger;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.User;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+import com.marych.insuranceApp.scanners.jsonScanner.JsonScanner;
 import com.marych.insuranceApp.insurance.InsuranceCompany;
 import com.marych.insuranceApp.insurance.derivative.Derivative;
-import com.marych.insuranceApp.menu.InsuranceMenu.InsurancePolicyMenu;
-import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.DerivativeScanner;
+import com.marych.insuranceApp.scanners.DerivativeScanner;
 
 import java.io.IOException;
-
-import static com.marych.insuranceApp.Main.user;
+import java.util.Objects;
 
 public class CreateDerCommand implements MenuItem {
     Derivative derivative;
+
+    User user;
+
+    DerivativeScanner derivativeScanner;
+
+    JsonScanner jsonScanner;
+    DerivativeMenu derivativeMenu;
+
     @Override
-    public void execute() throws IOException {
+    public boolean execute() throws IOException {
+        user = getUser();
+        jsonScanner = getJsonScanner();
+        derivativeScanner = getDerivativeScanner();
         createDerivative();
-        DerivativeMenu derivativeMenu = new DerivativeMenu();
+        derivativeMenu = getDerivativeMenu();
         derivativeMenu.execute();
+        return true;
     }
 
     private void createDerivative() throws IOException {
-        DerivativeScanner derivativeScanner = new DerivativeScanner();
         if (user instanceof Customer customer) {
             derivative = derivativeScanner.createDerivative(customer);
         } else if (user instanceof InsuranceSpecialist insuranceSpecialist) {
@@ -34,14 +46,52 @@ public class CreateDerCommand implements MenuItem {
             addData();
         }
     }
-    public  void addData() throws IOException {
+
+    public void addData() throws IOException {
+        UserLogger userLogger = new UserLogger();
+        userLogger.info("User id" + user.getUserId() + " created derivative No" + derivative.getDerivativeNo());
         InsuranceCompany insuranceCompany = derivative.getInsuranceCompany();
         Customer customer = derivative.getDerivativeHolder();
         InsuranceSpecialist insuranceSpecialist = derivative.getInsurer();
-        insuranceCompany.addDerivative(customer, derivative);
         customer.addDerivative(derivative);
         insuranceSpecialist.addDerivative(derivative);
         insuranceCompany.addDerivative(customer, derivative);
-        JsonScanner.addDerivative(derivative);
+        jsonScanner.addDerivative(derivative);
+    }
+
+    public void setDerivativeMenu(DerivativeMenu derivativeMenu) {
+        this.derivativeMenu = derivativeMenu;
+    }
+
+    public DerivativeMenu getDerivativeMenu() {
+        return Objects.requireNonNullElseGet(derivativeMenu, DerivativeMenu::new);
+    }
+
+    public void setDerivativeScanner(DerivativeScanner derivativeScanner) {
+        this.derivativeScanner = derivativeScanner;
+    }
+
+    public JsonScanner getJsonScanner() {
+        return Objects.requireNonNullElseGet(jsonScanner, JsonScanner::new);
+    }
+
+    public void setJsonScanner(JsonScanner jsonScanner) {
+        this.jsonScanner = jsonScanner;
+    }
+
+    public DerivativeScanner getDerivativeScanner() {
+        return Objects.requireNonNullElseGet(derivativeScanner, DerivativeScanner::new);
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        if (Main.user != null) {
+            return Main.user;
+        } else {
+            return user;
+        }
     }
 }

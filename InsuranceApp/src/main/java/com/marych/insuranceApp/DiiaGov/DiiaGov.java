@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.DiiaGov;
+package com.marych.insuranceApp.diiaGov;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Scanner;
 
 public class DiiaGov {
-@JsonProperty("documentNo")
+    @JsonProperty("documentNo")
     private int documentNo;
     @JsonProperty("diiaSign")
     private int diiaSign;
@@ -25,14 +25,15 @@ public class DiiaGov {
         this.diiaSign = diiaSign;
     }
 
-    public void setBirthDate(String birthDateStr) {
+    public DiiaGov setBirthDate(String birthDateStr) {
         this.birthDate = LocalDate.parse(birthDateStr);
+        return this;
     }
 
     @JsonProperty("ITN")
     int ITN;
 
-    DiiaGov(int documentNo, int diiaSign) {
+    public DiiaGov(int documentNo, int diiaSign) {
         this.documentNo = documentNo;
         this.diiaSign = diiaSign;
     }

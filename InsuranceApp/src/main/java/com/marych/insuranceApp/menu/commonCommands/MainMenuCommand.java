@@ -5,8 +5,9 @@ import com.marych.insuranceApp.menu.mainMenu.MainMenu;
 public class MainMenuCommand implements MenuItem {
 
     @Override
-    public void execute() {
+    public boolean execute() {
         MainMenu mainMenu = new MainMenu();
         mainMenu.run();
+        return true;
     }
 }

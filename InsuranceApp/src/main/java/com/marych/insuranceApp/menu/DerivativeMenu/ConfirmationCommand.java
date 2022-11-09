@@ -1,10 +1,10 @@
-package com.marych.insuranceApp.menu.DerivativeMenu;
+package com.marych.insuranceApp.menu.derivativeMenu;
 
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
 
 public class ConfirmationCommand implements MenuItem {
     @Override
-    public void execute() {
-
+    public boolean execute() {
+        return true;
     }
 }

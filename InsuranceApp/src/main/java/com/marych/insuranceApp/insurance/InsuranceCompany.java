@@ -2,10 +2,10 @@ package com.marych.insuranceApp.insurance;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
-import com.marych.insuranceApp.insurance.derivative.Derivative;
 import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+import com.marych.insuranceApp.insurance.derivative.Derivative;
 
 import java.util.ArrayList;
 import java.util.HashMap;

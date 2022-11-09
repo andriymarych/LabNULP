@@ -1,17 +1,16 @@
 package com.marych.insuranceApp;
 
 
-import com.marych.insuranceApp.DiiaGov.DiiaGovList;
-import com.marych.insuranceApp.User.User;
-import com.marych.insuranceApp.User.UserList;
+import com.marych.insuranceApp.diiaGov.DiiaGovList;
+import com.marych.insuranceApp.tools.EmailErrorSender;
+import com.marych.insuranceApp.user.User;
+import com.marych.insuranceApp.user.UserList;
 import com.marych.insuranceApp.insurance.InsuranceCompanyList;
-import com.marych.insuranceApp.menu.LoginMenu.LoginMenu;
+import com.marych.insuranceApp.menu.loginMenu.LoginMenu;
 
 
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class Main {
@@ -24,5 +23,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         LoginMenu loginMenu = new LoginMenu();
         loginMenu.execute();
+       /* EmailErrorSender emailErrorSender = new EmailErrorSender();
+        emailErrorSender.send("Andrew");*/
     }
 }

@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.User;
+package com.marych.insuranceApp.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InsuranceSpecialist extends User {
-@JsonProperty("firstName")
+    @JsonProperty("firstName")
     String firstName;
     @JsonProperty("lastName")
     String lastName;
@@ -18,25 +18,27 @@ public class InsuranceSpecialist extends User {
     @JsonProperty("insuranceCompanyId")
     int insuranceCompanyId;
     @JsonIgnore
-    Map<Integer,InsurancePolicy>  insurancePolicyList;
+    Map<Integer, InsurancePolicy> insurancePolicyList;
 
     @JsonIgnore
-    Map<Integer,Derivative> derivativeList;
+    Map<Integer, Derivative> derivativeList;
 
     public InsuranceSpecialist(int Id, String login, String password) {
         super(login, password);
         this.setUserId(Id);
+        this.setUserRole(1);
         insurancePolicyList = new HashMap<>();
         derivativeList = new HashMap<>();
     }
-    public InsuranceSpecialist(){
+
+    public InsuranceSpecialist() {
         super();
         insurancePolicyList = new HashMap<>();
         derivativeList = new HashMap<>();
     }
 
     @Override
-    String getFirstName() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -54,23 +56,43 @@ public class InsuranceSpecialist extends User {
         return derivativeList;
     }
 
-    public void addInsurancePolicy(InsurancePolicy insurancePolicy) {
-        insurancePolicyList.put(insurancePolicy.getPolicyNo(),insurancePolicy);
+    public boolean addInsurancePolicy(InsurancePolicy insurancePolicy) {
+        if (insurancePolicy != null) {
+            insurancePolicyList.put(insurancePolicy.getPolicyNo(), insurancePolicy);
+            return true;
+        }
+        return false;
     }
-    public void addDerivative(Derivative derivative) {
-        derivativeList.put(derivative.getDerivativeNo(),derivative);
+
+    public boolean addDerivative(Derivative derivative) {
+        if (derivative != null) {
+            derivativeList.put(derivative.getDerivativeNo(), derivative);
+            return true;
+        }
+        return false;
     }
-    public void deleteInsurancePolicy(int policyNo){
-        insurancePolicyList.remove(policyNo);
+
+    public boolean deleteInsurancePolicy(int policyNo) {
+        if (insurancePolicyList.containsKey(policyNo)) {
+            insurancePolicyList.remove(policyNo);
+            return true;
+        }
+        return false;
     }
-    public void deleteDerivative(int derivativeNo){
-        derivativeList.remove(derivativeNo);
+
+    public boolean deleteDerivative(int derivativeNo) {
+        if (derivativeList.containsKey(derivativeNo)) {
+            derivativeList.remove(derivativeNo);
+            return true;
+        }
+        return false;
     }
 
     public InsuranceSpecialist setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -91,8 +113,16 @@ public class InsuranceSpecialist extends User {
         return insuranceCompanyId;
     }
 
+    public Derivative getDerivative(int derivativeNo){
+        return derivativeList.getOrDefault(derivativeNo,null);
+    }
+    public InsurancePolicy getInsurancePolicy(int policyNo){
+        return insurancePolicyList.getOrDefault(policyNo, null);
+
+    }
+
     @Override
     public String toString() {
-        return   firstName + " " + lastName;
+        return firstName + " " + lastName;
     }
 }

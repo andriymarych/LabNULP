@@ -1,36 +1,39 @@
-package com.marych.insuranceApp.menu.InsuranceMenu.createInsurance;
+package com.marych.insuranceApp.menu.insuranceMenu.createInsurance;
 
 
-import static com.marych.insuranceApp.Main.*;
-
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
-import com.marych.insuranceApp.User.jsonScanner.JsonInfoScanner;
-import com.marych.insuranceApp.User.jsonScanner.JsonScanner;
-import com.marych.insuranceApp.insurance.InsuranceCompany;
+import com.marych.insuranceApp.Main;
 import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
-import com.marych.insuranceApp.menu.InsuranceMenu.InsuranceMenuCommand;
+import com.marych.insuranceApp.menu.CommandMenuExecutor;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.CommandMenuExecutor;
+import com.marych.insuranceApp.menu.insuranceMenu.InsuranceMenuCommand;
+import com.marych.insuranceApp.scanners.jsonScanner.JsonScanner;
+import com.marych.insuranceApp.tools.UserLogger;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+import com.marych.insuranceApp.scanners.jsonScanner.JsonInfoScanner;
+import com.marych.insuranceApp.insurance.InsuranceCompany;
+import com.marych.insuranceApp.user.User;
 
 import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class CreateInsCommand implements MenuItem {
 
     private final Map<String, MenuItem> menuItems;
+    private JsonInfoScanner jsonInfoScanner;
+    private JsonScanner jsonScanner;
 
     public CreateInsCommand() {
         menuItems = new LinkedHashMap<>();
-        if (user instanceof Customer) {
+        if (Main.user instanceof Customer) {
             menuItems.put("liability", new CreateLiabilityCommand());
             menuItems.put("personal", new CreatePersonalCommand());
             menuItems.put("property", new CreatePropertyCommand());
-            menuItems.put("info", new ShowInfoCommand());
+            menuItems.put("info", new com.marych.insuranceApp.menu.insuranceMenu.createInsurance.ShowInfoCommand());
             menuItems.put("exit", new InsuranceMenuCommand());
-        } else if (user instanceof InsuranceSpecialist) {
+        } else if (Main.user instanceof InsuranceSpecialist) {
             menuItems.put("liability", new CreateLiabilityCommand());
             menuItems.put("personal", new CreatePersonalCommand());
             menuItems.put("property", new CreatePropertyCommand());
@@ -39,21 +42,22 @@ public class CreateInsCommand implements MenuItem {
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         printMenuInfo();
         CommandMenuExecutor.execute(menuItems);
+        return true;
     }
 
     private void printMenuInfo() {
         System.out.println("*".repeat(60));
         System.out.println();
-        if (user instanceof Customer) {
+        if (Main.user instanceof Customer) {
             System.out.println("personal - створити договір особистого страхування.");
             System.out.println("property - створити договір майнового страхування.");
             System.out.println("liability - створити договір страхування відповідальності.");
             System.out.println("info - довідка");
             System.out.println("exit - повернутися у меню керування страховими зобовʼязаннями");
-        } else if (user instanceof InsuranceSpecialist) {
+        } else if (Main.user instanceof InsuranceSpecialist) {
             System.out.println("liability - створити договір особистого страхування.");
             System.out.println("personal - створити договір майнового страхування.");
             System.out.println("property - створити договір страхування відповідальності.");
@@ -61,7 +65,11 @@ public class CreateInsCommand implements MenuItem {
         }
     }
 
-    public static void addData(InsurancePolicy insurancePolicy) throws IOException {
+    public boolean addData(InsurancePolicy insurancePolicy, User user) throws IOException {
+        UserLogger userLogger = new UserLogger();
+        userLogger.info("User id" + user.getUserId() + " created insurance policy No" + insurancePolicy.getPolicyNo());
+        jsonInfoScanner = getJsonInfoScanner();
+        jsonScanner = getJsonScanner();
         InsuranceCompany insuranceCompany = insurancePolicy.getInsuranceCompany();
         Customer customer = insurancePolicy.getPolicyHolder();
         InsuranceSpecialist insuranceSpecialist = insurancePolicy.getInsurer();
@@ -69,33 +77,23 @@ public class CreateInsCommand implements MenuItem {
         customer.addInsurancePolicy(insurancePolicy);
         insuranceSpecialist.addInsurancePolicy(insurancePolicy);
         insuranceCompany.addInsurancePolicy(customer, insurancePolicy);
-        JsonInfoScanner.addPolicyInfo(insurancePolicy);
-        JsonScanner.addInsurancePolicy(insurancePolicy);
+        jsonInfoScanner.addPolicyInfo(insurancePolicy);
+        jsonScanner.addInsurancePolicy(insurancePolicy);
+        return true;
+    }
+    public void setJsonInfoScanner(JsonInfoScanner jsonInfoScanner){
+        this.jsonInfoScanner = jsonInfoScanner;
+    }
+    public JsonInfoScanner getJsonInfoScanner(){
+        return Objects.requireNonNullElseGet(jsonInfoScanner, JsonInfoScanner::new);
+    }
+    public void setJsonScanner(JsonScanner jsonInfoScanner){
+        this.jsonScanner = jsonInfoScanner;
+    }
+    public JsonScanner getJsonScanner(){
+        return Objects.requireNonNullElseGet(jsonScanner, JsonScanner::new);
     }
 
-    public static double selectRisk() {
-        Scanner in = new Scanner(System.in);
-        int percentage;
-        System.out.println("Введіть рівень ризику ( 0 - 100 %) :");
-        for (int i = 3; i > 0; i--) {
-            percentage = in.nextInt();
-            if (percentage > 0 && percentage < 90) {
-                return percentage / 100.0;
-            }
-            if (i != 1) {
-                if (i == 3) {
-                    System.out.println("Ви ввели невірний рівень ризику." +
-                            "\nУ вас залишилось " + (i - 1) + " Cпроби");
-                } else {
-                    System.out.println("Ви ввели невірний рівень ризику." +
-                            "\nУ вас залишилось " + (i - 1) + " Спроба");
-                }
-            } else {
-                System.out.println("Ви вичерпали ліміт введення рівня ризику.");
-            }
-        }
-        return 0;
-    }
 
 
 }

@@ -3,8 +3,6 @@ package com.marych.insuranceApp.insurance.policy.personal;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.marych.insuranceApp.insurance.policy.PolicyInfo;
 
-import java.time.LocalDate;
-
 public class LifeInsuranceInfo extends PolicyInfo {
     @JsonProperty("firstName")
     private  String firstName;
@@ -34,10 +32,10 @@ public class LifeInsuranceInfo extends PolicyInfo {
         super.setRiskPercentage(riskPercentage);
         return this;
     }
-  /*  public LifeInsuranceInfo setInfoId(int infoId){
-        super.setInfoId(infoId);
-        return this;
-    }*/
+    /*  public LifeInsuranceInfo setInfoId(int infoId){
+          super.setInfoId(infoId);
+          return this;
+      }*/
     public LifeInsuranceInfo setInfoType(int infoType){
         super.setInfoType(infoType);
         return this;

@@ -1,9 +1,9 @@
 package com.marych.insuranceApp.insurance.derivative;
 
-import com.marych.insuranceApp.User.Customer;
-import com.marych.insuranceApp.User.InsuranceSpecialist;
-import com.marych.insuranceApp.User.User;
 import com.marych.insuranceApp.insurance.policy.InsurancePolicy;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.User;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
 
 import java.util.ArrayList;
 import java.util.Map;

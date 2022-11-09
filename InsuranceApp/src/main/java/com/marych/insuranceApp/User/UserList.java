@@ -1,15 +1,15 @@
-package com.marych.insuranceApp.User;
+package com.marych.insuranceApp.user;
 
 
-import com.marych.insuranceApp.DiiaGov.DiiaGov;
-import com.marych.insuranceApp.User.jsonScanner.JsonScanner;
-import com.marych.insuranceApp.tools.EmailValidation;
+import com.marych.insuranceApp.Main;
+import com.marych.insuranceApp.diiaGov.DiiaGov;
+import com.marych.insuranceApp.scanners.UserScanner;
+import com.marych.insuranceApp.scanners.jsonScanner.JsonScanner;
+import com.marych.insuranceApp.tools.LogStatus;
+
 
 import java.io.IOException;
 import java.util.*;
-
-
-import static com.marych.insuranceApp.Main.diiaGovDocuments;
 
 
 public class UserList {
@@ -17,159 +17,125 @@ public class UserList {
     private Map<String, User> userLogins;
 
     private Map<String, User> userEmails;
-    private Map<Integer, User>  userIdList;
+    private Map<Integer, User> userIdList;
     private static int userNumber;
+    private UserScanner userScanner;
+    private JsonScanner jsonScanner;
 
-    public UserList(){
+    public UserList() {
         userLogins = new HashMap<>();
         userIdList = new HashMap<>();
         userEmails = new HashMap<>();
+        userScanner = new UserScanner(this);
         userNumber = 1000;
     }
 
-    public static void addUserNumber(){
+    public UserList(UserScanner userScanner) {
+        userLogins = new HashMap<>();
+        userIdList = new HashMap<>();
+        userEmails = new HashMap<>();
+        this.userScanner = userScanner;
+        userNumber = 1000;
+    }
+
+    public static void addUserNumber() {
         userNumber++;
     }
-    public static int getNextUserNumber(){
+
+    public static int getNextUserNumber() {
         userNumber++;
         return userNumber;
     }
 
-    public User login() {
+    public User login(String login, String password) {
         User user;
-        String login;
-        String password;
-        Scanner in = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Логін:");
-            login = in.next();
-            System.out.println("Пароль:");
-            password = in.next();
-            if (userLogins.containsKey(login)) {
-                user = userLogins.get(login);
-                if (user.verifyPassword(password)) {
-                    System.out.println("Вітаємо!, " + user.getFirstName());
-                    return user;
-                } else {
-                    System.out.println("Хибний пароль. Спробуйте ще раз.");
-                }
-            } else {
-                System.out.println("Користувача " + login + " не існує. Спробуйте ще раз.");
+        if (userLogins.containsKey(login)) {
+            user = userLogins.get(login);
+            if (user.verifyPassword(password)) {
+                user.setLogStatus(LogStatus.SUCCESS);
+            }else{
+                user.setLogStatus(LogStatus.PASSWORD);
             }
+            return user;
         }
         return null;
     }
+
 
     public void addUserLogin(String login, User user) {
-        userLogins.put(login,user);
+        userLogins.put(login, user);
     }
 
-    public Customer userCreate() throws IOException {
-        DiiaGov diiaDocument ;
-        int documentNo;
-        Scanner in = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Введіть ваший номер ID-Паспорту, " +
-                    "щоб поділитися із нами копіями цифрових документів із Дії:");
-            documentNo = in.nextInt();
-            diiaDocument = diiaGovDocuments.getDocument(documentNo);
-            if (diiaDocument != null) {
-                return userCreate(diiaDocument);
-            }
+    public Customer userCreate(int documentId) throws IOException {
+        DiiaGov diiaDocument;
+        diiaDocument = Main.diiaGovDocuments.getDocument(documentId);
+        if (diiaDocument != null) {
+            Customer customer = userCreation(diiaDocument);
+            return customer;
         }
-        printExitMessage();
-        System.exit(1);
         return null;
     }
 
-    public Map<Integer,User> getUserIdList() {
+    public Map<Integer, User> getUserIdList() {
         return userIdList;
     }
-    public void addUserId(int id, User user){
+
+    public void addUserId(int id, User user) {
         addUserNumber();
-        userIdList.put(id,user);
+        userIdList.put(id, user);
     }
-    private String createLogin(){
-        String login;
-        Scanner in = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            System.out.println("Введіть Логін:");
-            login = in.next();
-            if (userLogins.containsKey(login)) {
-                System.out.println("Обліковий запис із таким логіном вже існує.");
-            } else {
-                return login;
-            }
-        }
-        return null;
-    }
-    public void addUserEmail(String email, User user){
-        userEmails.put(email,user);
 
-    }
-    private String createEmail(){
-        String email ;
-        Scanner in = new Scanner(System.in);
-        for (int i = 3; i > 0; i--) {
-            System.out.println("Введіть електронну пошту:");
-            email = in.next();
-            if(userEmails.containsKey(email)){
-                System.out.println("Обліковий запис із введеною електронною поштою вже існує.");
-                i++;
-                continue;
-            }
-            if (EmailValidation.validate(email)) {
-                return email;
-            } else {
-                if (i != 1) {
-                    if (i == 3) {
-                        System.out.println("Ви ввели невірний адрес електронної пошти." +
-                                "\nУ вас залишилось " + (i - 1) + " Cпроби");
-                    } else {
-                        System.out.println("Ви ввели невірний адрес електронної пошти." +
-                                "\nУ вас залишилось " + (i - 1) + " Спроба");
-                    }
-                } else {
-                    System.out.println("Ви вичерпали ліміт введення адресу електронної пошти");
-                }
-            }
-        }
-        return null;
-
+    public void addUserEmail(String email, User user) {
+        userEmails.put(email, user);
     }
 
     private void printExitMessage() {
         System.out.println("Повторіть спробу реєстрації через 5 хвилин");
     }
 
-    private Customer userCreate(DiiaGov ID) throws IOException {
+    public Customer userCreation(DiiaGov ID) throws IOException {
+        jsonScanner = getJsonScanner();
         Customer newUser;
         String email;
         String login;
         String password;
         int Id;
-        Scanner in = new Scanner(System.in);
-        email = createEmail();
+        email = userScanner.createEmail();
         if (email == null) {
             printExitMessage();
-            System.exit(2);
+            return null;
         }
-        login = createLogin();
-        System.out.println("Введіть Пароль:");
-        password = in.next();
-        Id = getNextUserNumber();
+        login = userScanner.createLogin();
+        password = userScanner.createPassword();
+        Id = userScanner.getNextUserId();
         newUser = new Customer(Id, login, password)
                 .setFirstName(ID.getFirstName())
                 .setLastName(ID.getLastName())
                 .setBirthDate(ID.getBirthDate().toString())
                 .setITN(ID.getITN())
                 .setEmail(email);
-        userLogins.put(login,newUser);
-        userEmails.put(email,newUser);
-        userIdList.put(Id,newUser);
-        JsonScanner.addCustomer(newUser);
+        userLogins.put(login, newUser);
+        userEmails.put(email, newUser);
+        userIdList.put(Id, newUser);
+        jsonScanner.addCustomer(newUser);
         addUserNumber();
         System.out.println("Вітаємо, ваший обліковий запис успішно створено");
         return newUser;
+    }
+
+    public JsonScanner getJsonScanner() {
+        return Objects.requireNonNullElseGet(jsonScanner, JsonScanner::new);
+    }
+
+    public void setJsonScanner(JsonScanner jsonScanner) {
+        this.jsonScanner = jsonScanner;
+    }
+
+    public Map<String, User> getUserLogins() {
+        return userLogins;
+    }
+
+    public Map<String, User> getUserEmails() {
+        return userEmails;
     }
 }

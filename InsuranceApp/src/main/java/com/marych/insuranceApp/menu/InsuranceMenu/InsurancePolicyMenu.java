@@ -1,21 +1,24 @@
-package com.marych.insuranceApp.menu.InsuranceMenu;
+package com.marych.insuranceApp.menu.insuranceMenu;
 
-import com.marych.insuranceApp.User.*;
-import com.marych.insuranceApp.menu.InsuranceMenu.createInsurance.CreateInsCommand;
+import com.marych.insuranceApp.Main;
+import com.marych.insuranceApp.user.Customer;
+import com.marych.insuranceApp.user.InsuranceSpecialist;
+import com.marych.insuranceApp.user.User;
+import com.marych.insuranceApp.menu.insuranceMenu.createInsurance.CreateInsCommand;
 import com.marych.insuranceApp.menu.commonCommands.MainMenuCommand;
 import com.marych.insuranceApp.menu.commonCommands.MenuItem;
-import com.marych.insuranceApp.tools.CommandMenuExecutor;
+import com.marych.insuranceApp.menu.CommandMenuExecutor;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.marych.insuranceApp.Main.*;
-
 public class InsurancePolicyMenu implements MenuItem {
 
     private final Map<String, MenuItem> menuItems;
+    User user;
 
     public InsurancePolicyMenu() {
+        user = getUser();
         menuItems = new LinkedHashMap<>();
         if (user instanceof Customer) {
             menuItems.put("create ins", new CreateInsCommand());
@@ -28,13 +31,13 @@ public class InsurancePolicyMenu implements MenuItem {
             menuItems.put("del ins", new DeleteInsCommand());
             menuItems.put("exit", new MainMenuCommand());
         }
-
     }
 
     @Override
-    public void execute() {
+    public boolean execute() {
         printInfo();
         CommandMenuExecutor.execute(menuItems);
+        return true;
     }
     private void printInfo(){
         System.out.println("*".repeat(60));
@@ -49,6 +52,17 @@ public class InsurancePolicyMenu implements MenuItem {
             System.out.println("show ins - переглянути створені договори страхування.");
             System.out.println("del ins - видалити існуючий договір страхування.");
             System.out.println("exit - повернутися у головне меню.");
+        }
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        if (Main.user != null) {
+            return Main.user;
+        } else {
+            return user;
         }
     }
 }
