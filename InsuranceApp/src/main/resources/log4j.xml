@@ -8,10 +8,10 @@
         <param name="SMTPProtocol" value="smtps" />
         <param name="SMTPHost" value="smtp.gmail.com" />
         <param name="SMTPPort" value="465" />
-        <param name="SMTPUsername" value="andriumarich@gmail.com" />
-        <param name="SMTPPassword" value="tynzbtwgbjvqzjqt" />
-        <param name="From" value="andriumarich@gmail.com" />
-        <param name="To" value="andrii.marych.kn.2021@lpnu.ua" />
+        <param name="SMTPUsername" value="****" />
+        <param name="SMTPPassword" value="****" />
+        <param name="From" value="****" />
+        <param name="To" value="****" />
         <param name="Subject" value="InsuranceApp Error" />
 
         <layout class="org.apache.log4j.PatternLayout">
