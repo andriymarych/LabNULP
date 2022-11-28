@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="570.0" prefWidth="810.0" style="-fx-background-color: #43ba7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marych.insuranceApp.userInterface.main.MainController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="8.0" fill="WHITE" height="452.0" layoutX="14.0" layoutY="56.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-miter-limit: 4; -fx-arc-height: 40; -fx-arc-width: 40;" width="353.0" />
+      <Button fx:id="insurancePolicyMenuButton" layoutX="79.0" layoutY="120.0" mnemonicParsing="false" onAction="#InsurancePolicyMenuButton" prefHeight="65.0" prefWidth="230.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Страхові Договори" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="derivativeMenuButton" layoutX="79.0" layoutY="221.0" mnemonicParsing="false" onAction="#DerivativeMenuButton" prefHeight="65.0" prefWidth="230.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Деривативи" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="exitButton" layoutX="80.0" layoutY="403.0" mnemonicParsing="false" onAction="#ExitButton" prefHeight="65.0" prefWidth="230.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Вихід" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="49.0" fitWidth="42.0" layoutX="31.0" layoutY="414.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/logOut.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="48.0" fitWidth="42.0" layoutX="32.0" layoutY="129.0">
+         <image>
+            <Image url="@../../images/Policy.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="39.0" layoutX="33.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/DerivativeIcon.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="55.0" layoutX="523.0" layoutY="456.0" stroke="#2ea365" strokeType="INSIDE" style="-fx-arc-height: 60; -fx-arc-width: 60;" width="242.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="36.0" layoutX="538.0" layoutY="466.0" stroke="#2ea365" strokeType="INSIDE" style="-fx-arc-height: 40; -fx-arc-width: 40;" width="214.0" />
+      <Label fx:id="dateTime" alignment="CENTER" contentDisplay="CENTER" layoutX="534.0" layoutY="468.0" prefHeight="32.0" prefWidth="223.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

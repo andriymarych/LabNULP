@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="570.0" prefWidth="810.0" style="-fx-background-color: #43ba7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marych.insuranceApp.userInterface.derivativeMenu.ViewDerivativeController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="8.0" fill="WHITE" height="532.0" layoutX="14.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-miter-limit: 4; -fx-arc-height: 40; -fx-arc-width: 40;" width="783.0" />
+      <ImageView fitHeight="75.0" fitWidth="59.0" layoutX="50.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/returnIcon.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnButton" opacity="0.0" prefHeight="48.0" prefWidth="49.0" text="Button" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="54.0" layoutX="215.0" layoutY="38.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="386.0" />
+      <Text fill="#fcfcfc" layoutX="219.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Деривативи" textAlignment="CENTER" wrappingWidth="389.2140655517578">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="245.0" layoutX="115.0" layoutY="122.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="581.0" />
+      <TableView fx:id="tableView" layoutX="130.0" layoutY="147.0" prefHeight="207.0" prefWidth="550.0">
+         <columns>
+            <TableColumn fx:id="derivativeId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="insuredId" prefWidth="115.80252075195312" text="ID Страхувальника" />
+            <TableColumn fx:id="insurerId" prefWidth="88.54150390625" text="ID Страховика" />
+            <TableColumn fx:id="companyId" prefWidth="138.04144287109375" text="ID Страхової Компанії" />
+            <TableColumn fx:id="derivativePrice" prefWidth="71.75830078125" text="Ціна" />
+            <TableColumn fx:id="signDate" prefWidth="77.843505859375" text="Дата" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="163.0" layoutX="295.0" layoutY="376.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="405.0" />
+      <TableView fx:id="policyListView" layoutX="311.0" layoutY="406.0" prefHeight="117.0" prefWidth="372.0">
+         <columns>
+            <TableColumn fx:id="derivativeViewId" prefWidth="183.26144409179688" text="Номер Деривативу" />
+            <TableColumn fx:id="policyViewId" prefWidth="175.5" text="Номер Страхового договору" />
+         </columns>
+      </TableView>
+      <TextField fx:id="derivativeNoField" alignment="CENTER" layoutX="115.0" layoutY="397.0" prefHeight="39.0" prefWidth="171.0" promptText="Номер Деривативу" style="-fx-background-radius: 14;">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </TextField>
+      <Button layoutX="115.0" layoutY="448.0" mnemonicParsing="false" onAction="#viewPolicyList" prefHeight="38.0" prefWidth="171.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Переглянути" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Text fill="WHITE" layoutX="327.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Перелік страхових договорів, що формують дериватив" wrappingWidth="346.2460632324219">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

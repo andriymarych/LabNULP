@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="570.0" prefWidth="810.0" style="-fx-background-color: #43ba7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marych.insuranceApp.userInterface.insuranceMenu.ViewPolicyDetailsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="8.0" fill="WHITE" height="532.0" layoutX="14.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-miter-limit: 4; -fx-arc-height: 40; -fx-arc-width: 40;" width="783.0" />
+      <ImageView fitHeight="75.0" fitWidth="59.0" layoutX="50.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/returnIcon.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnButton" opacity="0.0" prefHeight="48.0" prefWidth="49.0" text="Button" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="54.0" layoutX="215.0" layoutY="38.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="386.0" />
+      <Text fill="#fcfcfc" layoutX="219.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Деталі страхових договорів" textAlignment="CENTER" wrappingWidth="389.2140655517578">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="129.0" layoutX="31.0" layoutY="109.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="747.0" />
+      <TableView fx:id="personalView" layoutX="45.0" layoutY="138.0" prefHeight="87.0" prefWidth="720.0">
+         <columns>
+            <TableColumn fx:id="personalPolicyId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="personalFirstName" prefWidth="114.76801300048828" text="Імʼя" />
+            <TableColumn fx:id="personalLastName" prefWidth="167.23202514648438" text="Прізвище" />
+            <TableColumn fx:id="personalAddress" prefWidth="238.77154541015625" text="Адреса" />
+            <TableColumn fx:id="personalBirthDate" prefWidth="138.56637573242188" text="Дата Народження" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="320.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Особисте Страхування" wrappingWidth="219.31698608398438">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="340.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Особисте страхування" wrappingWidth="219.31698608398438">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="129.0" layoutX="35.0" layoutY="247.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="747.0" />
+      <TableView fx:id="liabilityView" layoutX="49.0" layoutY="276.0" prefHeight="87.0" prefWidth="720.0">
+         <columns>
+            <TableColumn fx:id="liabilityPolicyId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="liabilityFirstName" prefWidth="121.4964599609375" text="Імʼя" />
+            <TableColumn fx:id="liabilityLastName" prefWidth="139.6565704345703" text="Прізвище" />
+            <TableColumn fx:id="liabilityProfessionalActivity" prefWidth="165.76443481445312" text="Сфера Діяльності" />
+            <TableColumn fx:id="liabilityCompanyName" prefWidth="152.23556518554688" text="Назва Підприємства" />
+            <TableColumn fx:id="liabilityPosition" prefWidth="86.5" text="Посада" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="295.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Страхування Відповідальності" wrappingWidth="303.1025695800781">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="129.0" layoutX="36.0" layoutY="386.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="747.0" />
+      <TableView fx:id="propertyView" layoutX="50.0" layoutY="415.0" prefHeight="87.0" prefWidth="720.0">
+         <columns>
+            <TableColumn fx:id="propertyPolicyId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="propertyFirstName" prefWidth="87.66363525390625" text="Імʼя" />
+            <TableColumn fx:id="propertyLastName" prefWidth="145.83631896972656" text="Прізвище" />
+            <TableColumn fx:id="propertyCarBrand" prefWidth="182.32015991210938" text="Марка Авто" />
+            <TableColumn fx:id="propertyCarModel" prefWidth="150.17987060546875" text="Модель Авто" />
+            <TableColumn fx:id="propertyLicensePlate" prefWidth="99.5" text="Номерний Знак" />
+         </columns>
+      </TableView>
+      <Text fill="WHITE" layoutX="330.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Майнове Страхування" wrappingWidth="219.31698608398438">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

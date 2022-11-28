@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="570.0" prefWidth="810.0" style="-fx-background-color: #43ba7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marych.insuranceApp.userInterface.derivativeMenu.CreateDerivativeController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="8.0" fill="WHITE" height="532.0" layoutX="10.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-miter-limit: 4; -fx-arc-height: 40; -fx-arc-width: 40;" width="794.0" />
+      <ImageView fitHeight="75.0" fitWidth="59.0" layoutX="50.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/returnIcon.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnButton" opacity="0.0" prefHeight="48.0" prefWidth="49.0" text="Button" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="43.0" layoutX="215.0" layoutY="43.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="395.0" />
+      <Text fill="#fcfcfc" layoutX="219.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Дериватив" textAlignment="CENTER" wrappingWidth="389.2140655517578">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="createDerivativeButton" layoutX="302.0" layoutY="480.0" mnemonicParsing="false" onAction="#createDerivative" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Створити" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="196.0" layoutX="17.0" layoutY="97.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="779.0" />
+      <TableView fx:id="tableView" layoutX="30.0" layoutY="142.0" prefHeight="134.0" prefWidth="758.0">
+         <columns>
+            <TableColumn fx:id="policyId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="compulsory" prefWidth="91.73761749267578" text="Обовʼязковість" />
+            <TableColumn fx:id="insuredId" prefWidth="115.80252075195312" text="ID Страхувальника" />
+            <TableColumn fx:id="insurerId" prefWidth="88.54150390625" text="ID Страховика" />
+            <TableColumn fx:id="companyId" prefWidth="138.04144287109375" text="ID Страхової Компанії" />
+            <TableColumn fx:id="insuredSum" prefWidth="71.75830078125" text="Сума" />
+            <TableColumn fx:id="insuredPayment" prefWidth="60.74169921875" text="Платіж" />
+            <TableColumn fx:id="signDate" prefWidth="78.0" text="Дата" />
+            <TableColumn fx:id="infoType" minWidth="0.0" prefWidth="37.87811279296875" text="Тип" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="70.0" layoutX="36.0" layoutY="306.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="454.0" />
+      <Text fill="#fcfcfc" layoutX="52.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Введіть через пробіл номери страхових договорів, з яких бажаєте сформувати дериватив" textAlignment="CENTER" wrappingWidth="422.0165710449219">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Text>
+      <TextField fx:id="policyNoField" alignment="CENTER" layoutX="60.0" layoutY="391.0" prefHeight="44.0" prefWidth="412.0" promptText="Номери договорів">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="33.0" layoutX="282.0" layoutY="104.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="265.0" />
+      <Text fill="#2ea365" layoutX="220.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ваші страхові договори" textAlignment="CENTER" wrappingWidth="389.2140655517578">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <ChoiceBox fx:id="insuranceSpecialists" centerShape="false" layoutX="518.0" layoutY="398.0" prefHeight="26.0" prefWidth="268.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ChoiceBox>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="60.0" layoutX="510.0" layoutY="310.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="280.0" />
+      <Text fill="#fcfcfc" layoutX="520.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Оберіть страхового спеціаліста :" textAlignment="CENTER" wrappingWidth="263.18736267089844">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="439.0" prefHeight="20.0" prefWidth="404.0" textFill="#b21717">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

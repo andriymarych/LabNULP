@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="570.0" prefWidth="810.0" style="-fx-background-color: #43ba7b;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.marych.insuranceApp.userInterface.derivativeMenu.FilterDerivativeController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="8.0" fill="WHITE" height="532.0" layoutX="14.0" layoutY="16.0" stroke="WHITE" strokeType="INSIDE" style="-fx-stroke-miter-limit: 4; -fx-arc-height: 40; -fx-arc-width: 40;" width="783.0" />
+      <ImageView fitHeight="75.0" fitWidth="59.0" layoutX="50.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/returnIcon.PNG" />
+         </image>
+      </ImageView>
+      <Button fx:id="returnButton" layoutX="55.0" layoutY="30.0" mnemonicParsing="false" onAction="#returnButton" opacity="0.0" prefHeight="48.0" prefWidth="49.0" text="Button" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="54.0" layoutX="142.0" layoutY="109.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="170.0" />
+      <Text fill="#fcfcfc" layoutX="145.0" layoutY="143.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Страхова сума" textAlignment="CENTER" wrappingWidth="162.60084533691406">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Button fx:id="filterButton" layoutX="289.0" layoutY="480.0" mnemonicParsing="false" onAction="#filterButton" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Відфільтрувати" textFill="WHITE">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="289.0" layoutX="23.0" layoutY="179.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="766.0" />
+      <TableView fx:id="tableView" layoutX="31.0" layoutY="207.0" prefHeight="240.0" prefWidth="750.0">
+         <columns>
+            <TableColumn fx:id="policyId" prefWidth="52.17268180847168" text="Номер" />
+            <TableColumn fx:id="compulsory" prefWidth="54.0" text="Обовʼяз." />
+            <TableColumn fx:id="insuredId" prefWidth="115.0" text="ID Страхувальника" />
+            <TableColumn fx:id="insurerId" prefWidth="90.0" text="ID Страховика" />
+            <TableColumn fx:id="companyId" prefWidth="112.5" text="ID Страх. Компанії" />
+            <TableColumn fx:id="insuredSum" prefWidth="79.0" text="Сума" />
+            <TableColumn fx:id="insuredPayment" prefWidth="74.0" text="Платіж" />
+            <TableColumn fx:id="signDate" prefWidth="76.0" text="Дата" />
+            <TableColumn fx:id="riskPercentage" prefWidth="58.0" text="\% Ризику" />
+            <TableColumn fx:id="infoType" prefWidth="31.0" text="Тип" />
+         </columns>
+      </TableView>
+      <TextField fx:id="startSumField" alignment="CENTER" layoutX="351.0" layoutY="113.0" prefHeight="45.0" prefWidth="130.0" promptText="Від">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="5.0" layoutX="498.0" layoutY="132.0" stroke="#2ea365" strokeType="INSIDE" width="25.0" />
+      <TextField fx:id="endSumField" alignment="CENTER" layoutX="551.0" layoutY="113.0" prefHeight="45.0" prefWidth="130.0" promptText="До">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="derivativeNoField" alignment="CENTER" layoutX="270.0" layoutY="42.0" promptText="Номер Деривативу">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>
