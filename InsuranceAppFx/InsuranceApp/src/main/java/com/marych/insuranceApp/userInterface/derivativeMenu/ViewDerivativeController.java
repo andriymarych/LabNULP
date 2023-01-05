@@ -1,9 +1,9 @@
 package com.marych.insuranceApp.userInterface.derivativeMenu;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.workClass.Derivative;
-import com.marych.insuranceApp.workClass.PolicyNode;
+import com.marych.insuranceApp.user.UserSession;
+import com.marych.insuranceApp.document.derivative.Derivative;
+import com.marych.insuranceApp.document.policy.PolicyNode;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,8 +40,7 @@ public class ViewDerivativeController implements Initializable {
     private TableColumn<Derivative, Double> derivativePrice;
     @FXML
     private TableColumn<Derivative, String> signDate;
-    @FXML
-    private TableColumn<PolicyNode, Integer> derivativeViewId;
+
     @FXML
     private TableColumn<PolicyNode, Integer> policyViewId;
     @FXML
@@ -52,7 +51,6 @@ public class ViewDerivativeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        derivativeViewId.setCellValueFactory(new PropertyValueFactory<>("derivativeId"));
         policyViewId.setCellValueFactory(new PropertyValueFactory<>("policyId"));
         derivativeId.setCellValueFactory(new PropertyValueFactory<>("derivativeId"));
         insuredId.setCellValueFactory(new PropertyValueFactory<>("holderId"));

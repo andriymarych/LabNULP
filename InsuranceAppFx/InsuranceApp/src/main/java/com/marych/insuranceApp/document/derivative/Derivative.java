@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.workClass;
+package com.marych.insuranceApp.document.derivative;
 
 public class Derivative {
     private int derivativeId;

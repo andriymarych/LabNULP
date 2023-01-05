@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.utils;
+package com.marych.insuranceApp.service.information;
 
 
 import org.apache.log4j.Logger;

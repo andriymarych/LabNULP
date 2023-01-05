@@ -53,7 +53,7 @@
             <TableColumn fx:id="liabilityLastName" prefWidth="139.6565704345703" text="Прізвище" />
             <TableColumn fx:id="liabilityProfessionalActivity" prefWidth="165.76443481445312" text="Сфера Діяльності" />
             <TableColumn fx:id="liabilityCompanyName" prefWidth="152.23556518554688" text="Назва Підприємства" />
-            <TableColumn fx:id="liabilityPosition" prefWidth="86.5" text="Посада" />
+            <TableColumn fx:id="liabilityPosition" prefWidth="79.5" text="Посада" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="295.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Страхування Відповідальності" wrappingWidth="303.1025695800781">
@@ -69,7 +69,7 @@
             <TableColumn fx:id="propertyLastName" prefWidth="145.83631896972656" text="Прізвище" />
             <TableColumn fx:id="propertyCarBrand" prefWidth="182.32015991210938" text="Марка Авто" />
             <TableColumn fx:id="propertyCarModel" prefWidth="150.17987060546875" text="Модель Авто" />
-            <TableColumn fx:id="propertyLicensePlate" prefWidth="99.5" text="Номерний Знак" />
+            <TableColumn fx:id="propertyLicensePlate" prefWidth="89.5" text="Номерний Знак" />
          </columns>
       </TableView>
       <Text fill="WHITE" layoutX="330.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Майнове Страхування" wrappingWidth="219.31698608398438">

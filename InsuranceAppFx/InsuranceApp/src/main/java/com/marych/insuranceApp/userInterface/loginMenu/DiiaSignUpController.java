@@ -1,9 +1,8 @@
 package com.marych.insuranceApp.userInterface.loginMenu;
 
 
-import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.utils.AppData;
-import com.marych.insuranceApp.utils.DiiaCopy;
+import com.marych.insuranceApp.service.information.AppData;
+import com.marych.insuranceApp.service.diia.DiiaCopy;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Objects;
 
 public class DiiaSignUpController {

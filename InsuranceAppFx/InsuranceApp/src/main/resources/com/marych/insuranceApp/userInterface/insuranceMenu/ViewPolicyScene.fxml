@@ -25,13 +25,13 @@
             <Font size="21.0" />
          </font>
       </Text>
-      <Button layoutX="289.0" layoutY="480.0" mnemonicParsing="false" onAction="#viewDetailsButton" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Переглянути деталі" textFill="WHITE">
+      <Button layoutX="282.0" layoutY="425.0" mnemonicParsing="false" onAction="#viewDetailsButton" prefHeight="33.0" prefWidth="246.0" style="-fx-background-color: #2ea365; -fx-background-radius: 14;" text="Переглянути деталі" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="353.0" layoutX="23.0" layoutY="115.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="766.0" />
-      <TableView fx:id="tableView" layoutX="31.0" layoutY="136.0" prefHeight="311.0" prefWidth="750.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="300.0" layoutX="23.0" layoutY="115.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="766.0" />
+      <TableView fx:id="tableView" layoutX="31.0" layoutY="136.0" prefHeight="261.0" prefWidth="750.0">
         <columns>
           <TableColumn fx:id="policyId" prefWidth="52.17268180847168" text="Номер" />
           <TableColumn fx:id="compulsory" prefWidth="64.0" text="Обовʼяз." />
@@ -40,10 +40,22 @@
             <TableColumn fx:id="companyId" prefWidth="110.5" text="ID Страх. Компанії" />
             <TableColumn fx:id="insuredSum" prefWidth="70.0" text="Сума" />
             <TableColumn fx:id="insuredPayment" prefWidth="68.0" text="Платіж" />
-            <TableColumn fx:id="signDate" prefWidth="78.0" text="Дата" />
-            <TableColumn fx:id="riskPercentage" prefWidth="59.0" text="\% Ризику" />
-            <TableColumn fx:id="infoType" prefWidth="33.0" text="Тип" />
+            <TableColumn fx:id="signDate" prefWidth="50.0" text="Дата" />
+            <TableColumn fx:id="riskPercentage" prefWidth="75.0" text="\% Ризику" />
+            <TableColumn fx:id="infoType" prefWidth="41.0" text="Тип" />
         </columns>
       </TableView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="54.0" layoutX="29.0" layoutY="475.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="373.0" />
+      <Button fx:id="selectPolicy" layoutX="49.0" layoutY="483.0" mnemonicParsing="false" onAction="#addToComparison" prefHeight="31.0" prefWidth="333.0" style="-fx-background-color: #ffffff; -fx-background-radius: 14;" text="Добавити контракт до порівняння" textFill="#2ea365">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="54.0" layoutX="478.0" layoutY="475.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="273.0" />
+      <Button fx:id="selectPolicy1" layoutX="498.0" layoutY="483.0" mnemonicParsing="false" onAction="#showComparison" prefHeight="39.0" prefWidth="234.0" style="-fx-background-color: #ffffff; -fx-background-radius: 14;" text="Порівняти" textFill="#2ea365">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

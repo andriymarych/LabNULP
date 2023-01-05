@@ -1,24 +1,20 @@
 package com.marych.insuranceApp.userInterface.insuranceMenu.policyCreation.insurancePolicies;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.workClass.InsurancePolicy;
-
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class InsurancePolicyDaoSender {
     private int policyId;
     private boolean compulsory;
     private int holderId;
     private int insurerId;
-    private int companyId;
+    private String companyId;
     private double insuredSum;
     private double insuredPayment;
     private int riskPercentage;
-    private short infoType;
+    private int infoType;
     private String date;
 
-    public InsurancePolicyDaoSender(int policyId, int holderId, int insurerId, int companyId) {
+    public InsurancePolicyDaoSender(int policyId, int holderId, int insurerId, String companyId) {
         this.policyId = policyId;
         this.holderId = holderId;
         this.insurerId = insurerId;
@@ -64,7 +60,7 @@ public class InsurancePolicyDaoSender {
         return this;
     }
 
-    public InsurancePolicyDaoSender setInfoType(short infoType) {
+    public InsurancePolicyDaoSender setInfoType(int infoType) {
         this.infoType = infoType;
         return this;
     }

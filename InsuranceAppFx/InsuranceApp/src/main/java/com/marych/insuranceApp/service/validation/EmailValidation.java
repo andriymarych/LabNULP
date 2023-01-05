@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.utils;
+package com.marych.insuranceApp.service.validation;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

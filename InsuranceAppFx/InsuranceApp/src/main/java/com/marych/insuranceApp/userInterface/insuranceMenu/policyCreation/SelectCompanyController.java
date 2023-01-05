@@ -1,8 +1,7 @@
 package com.marych.insuranceApp.userInterface.insuranceMenu.policyCreation;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.utils.AppData;
+import com.marych.insuranceApp.service.information.AppData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

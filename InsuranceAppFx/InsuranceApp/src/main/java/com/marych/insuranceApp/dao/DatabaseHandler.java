@@ -1,12 +1,12 @@
 package com.marych.insuranceApp.dao;
 
 
-import com.marych.insuranceApp.workClass.Derivative;
-import com.marych.insuranceApp.workClass.InsurancePolicy;
-import com.marych.insuranceApp.workClass.PolicyNode;
-import com.marych.insuranceApp.workClass.policyType.LiabilityPolicy;
-import com.marych.insuranceApp.workClass.policyType.PersonalPolicy;
-import com.marych.insuranceApp.workClass.policyType.PropertyPolicy;
+import com.marych.insuranceApp.document.derivative.Derivative;
+import com.marych.insuranceApp.document.policy.ObservableInsurancePolicy;
+import com.marych.insuranceApp.document.policy.PolicyNode;
+import com.marych.insuranceApp.document.policy.policyType.liability.ProfessionalActivityInsurance;
+import com.marych.insuranceApp.document.policy.policyType.personal.PersonalInsurance;
+import com.marych.insuranceApp.document.policy.policyType.property.PropertyInsurance;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -131,30 +131,30 @@ public class DatabaseHandler {
         return false;
     }
 
-    public ObservableList<InsurancePolicy> getInsurancePolicyData(int userId) {
-        ObservableList<InsurancePolicy> insurancePolicyList = FXCollections.observableArrayList();
+    public ObservableList<ObservableInsurancePolicy> getInsurancePolicyData(int userId) {
+        ObservableList<ObservableInsurancePolicy> observableInsurancePolicyList = FXCollections.observableArrayList();
         String SQL = "SELECT * FROM \"insurance_policy\" WHERE holder_id = " + userId + "ORDER BY policy_id";
         ResultSet resultSet = execQuery(SQL);
         try {
             while (resultSet.next()) {
-                InsurancePolicy insurancePolicy = new InsurancePolicy(
+                ObservableInsurancePolicy observableInsurancePolicy = new ObservableInsurancePolicy(
                         resultSet.getInt("policy_id"),
                         resultSet.getBoolean("compulsory"),
                         resultSet.getInt("holder_id"),
                         resultSet.getInt("insurer_id"),
                         resultSet.getInt("company_id")
                 );
-                insurancePolicy.setInsuredSum(resultSet.getDouble("insured_sum"))
+                observableInsurancePolicy.setInsuredSum(resultSet.getDouble("insured_sum"))
                         .setInsuredPayment(resultSet.getDouble("insured_payment"))
                         .setSignDate(resultSet.getDate("sign_date").toString())
                         .setRiskPercentage(resultSet.getShort("risk_percentage"))
                         .setInfoType(resultSet.getShort("info_type"));
-                insurancePolicyList.add(insurancePolicy);
+                observableInsurancePolicyList.add(observableInsurancePolicy);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return insurancePolicyList;
+        return observableInsurancePolicyList;
     }
 
     public ObservableList<Derivative> getDerivativeData(int userId) {
@@ -179,8 +179,8 @@ public class DatabaseHandler {
         return derivativeList;
     }
 
-    public ObservableList<InsurancePolicy> getInsurancePolicyDataByPrice(String derivativeId, String startSum, String endSum) {
-        ObservableList<InsurancePolicy> insurancePolicyList = FXCollections.observableArrayList();
+    public ObservableList<ObservableInsurancePolicy> getInsurancePolicyDataByPrice(String derivativeId, String startSum, String endSum) {
+        ObservableList<ObservableInsurancePolicy> observableInsurancePolicyList = FXCollections.observableArrayList();
         String SQL = "SELECT  insurance_policy.policy_id, compulsory,holder_id,insurer_id," +
                 "company_id,insured_sum,insured_payment,sign_date,risk_percentage,info_type " +
                 "FROM insurance_policy " +
@@ -192,24 +192,24 @@ public class DatabaseHandler {
         ResultSet resultSet = execQuery(SQL);
         try {
             while (resultSet.next()) {
-                InsurancePolicy insurancePolicy = new InsurancePolicy(
+                ObservableInsurancePolicy observableInsurancePolicy = new ObservableInsurancePolicy(
                         resultSet.getInt("policy_id"),
                         resultSet.getBoolean("compulsory"),
                         resultSet.getInt("holder_id"),
                         resultSet.getInt("insurer_id"),
                         resultSet.getInt("company_id")
                 );
-                insurancePolicy.setInsuredSum(resultSet.getDouble("insured_sum"))
+                observableInsurancePolicy.setInsuredSum(resultSet.getDouble("insured_sum"))
                         .setInsuredPayment(resultSet.getDouble("insured_payment"))
                         .setSignDate(resultSet.getDate("sign_date").toString())
                         .setRiskPercentage(resultSet.getShort("risk_percentage"))
                         .setInfoType(resultSet.getShort("info_type"));
-                insurancePolicyList.add(insurancePolicy);
+                observableInsurancePolicyList.add(observableInsurancePolicy);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return insurancePolicyList;
+        return observableInsurancePolicyList;
     }
 
     public ObservableList<PolicyNode> getDerivativePolicyList(String derivativeId) {
@@ -232,8 +232,8 @@ public class DatabaseHandler {
         return policyNodeList;
     }
 
-    public ObservableList<PersonalPolicy> getPersonalPolicyData(int userId) {
-        ObservableList<PersonalPolicy> personalPolicyList = FXCollections.observableArrayList();
+    public ObservableList<PersonalInsurance> getPersonalPolicyData(int userId) {
+        ObservableList<PersonalInsurance> personalInsuranceList = FXCollections.observableArrayList();
         String SQL = "SELECT * " +
                 "FROM insurance_policy " +
                 "INNER JOIN personal_info " +
@@ -243,21 +243,21 @@ public class DatabaseHandler {
         ResultSet resultSet = execQuery(SQL);
         try {
             while (resultSet.next()) {
-                PersonalPolicy personalPolicy = new PersonalPolicy(
+                PersonalInsurance personalInsurance = new PersonalInsurance(
                         resultSet.getInt(1),
                         resultSet.getString("insured_first_name"),
                         resultSet.getString("insured_last_name"))
                         .setAddress(resultSet.getString("address"))
                         .setBirthDate(resultSet.getString("birth_date"));
-                personalPolicyList.add(personalPolicy);
+                personalInsuranceList.add(personalInsurance);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return personalPolicyList;
+        return personalInsuranceList;
     }
-    public ObservableList<LiabilityPolicy> getLiabilityPolicyData(int userId){
-        ObservableList<LiabilityPolicy> liabilityPolicyList = FXCollections.observableArrayList();
+    public ObservableList<ProfessionalActivityInsurance> getLiabilityPolicyData(int userId){
+        ObservableList<ProfessionalActivityInsurance> professionalActivityInsuranceList = FXCollections.observableArrayList();
         String SQL = "SELECT * " +
                 "FROM insurance_policy " +
                 "INNER JOIN liability_info " +
@@ -267,22 +267,57 @@ public class DatabaseHandler {
         ResultSet resultSet = execQuery(SQL);
         try {
             while (resultSet.next()) {
-                LiabilityPolicy liabilityPolicy = new LiabilityPolicy(
+                ProfessionalActivityInsurance professionalActivityInsurance = new ProfessionalActivityInsurance(
                         resultSet.getInt(1),
                         resultSet.getString("insured_first_name"),
                         resultSet.getString("insured_last_name"),
                         resultSet.getString("insured_company_name"))
                         .setProfessionalActivity(resultSet.getString("professional_activity"))
                         .setPosition(resultSet.getString("position"));
-                liabilityPolicyList.add(liabilityPolicy);
+                professionalActivityInsuranceList.add(professionalActivityInsurance);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return liabilityPolicyList;
+        return professionalActivityInsuranceList;
     }
-    public ObservableList<PropertyPolicy> getPropertyPolicyData(int userId){
-        ObservableList<PropertyPolicy> propertyPolicyList = FXCollections.observableArrayList();
+    public ObservableList<ProfessionalActivityInsurance> getLiabilityPolicyList(int userId, String policyNoList){
+        ObservableList<ProfessionalActivityInsurance> professionalActivityInsuranceList = FXCollections.observableArrayList();
+        StringBuilder policyNoBuilder = new StringBuilder();
+        policyNoBuilder.append("(");
+        for (String policyNo : policyNoList.split(" ")) {
+            policyNoBuilder.append(policyNo)
+                    .append(", ");
+        }
+        policyNoBuilder.deleteCharAt(policyNoBuilder.length() - 1);
+        policyNoBuilder.deleteCharAt(policyNoBuilder.length() - 1);
+        policyNoBuilder.append(")");
+        String SQL = "SELECT * " +
+                "FROM insurance_policy " +
+                "INNER JOIN liability_info " +
+                "ON insurance_policy.policy_id = liability_info.policy_id " +
+                "WHERE holder_id = " + userId +
+                " AND info_type = 2 " +
+                "AND liability_info.policy_id IN " + policyNoBuilder;
+        ResultSet resultSet = execQuery(SQL);
+        try {
+            while (resultSet.next()) {
+                ProfessionalActivityInsurance professionalActivityInsurance = new ProfessionalActivityInsurance(
+                        resultSet.getInt(1),
+                        resultSet.getString("insured_first_name"),
+                        resultSet.getString("insured_last_name"),
+                        resultSet.getString("insured_company_name"))
+                        .setProfessionalActivity(resultSet.getString("professional_activity"))
+                        .setPosition(resultSet.getString("position"));
+                professionalActivityInsuranceList.add(professionalActivityInsurance);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return professionalActivityInsuranceList;
+    }
+    public ObservableList<PropertyInsurance> getPropertyPolicyData(int userId){
+        ObservableList<PropertyInsurance> propertyInsuranceList = FXCollections.observableArrayList();
         String SQL = "SELECT  * " +
                 "FROM insurance_policy " +
                 "INNER JOIN car_property_info " +
@@ -292,19 +327,21 @@ public class DatabaseHandler {
         ResultSet resultSet = execQuery(SQL);
         try {
             while (resultSet.next()) {
-                PropertyPolicy propertyPolicy = new PropertyPolicy(
+                PropertyInsurance propertyInsurance = new PropertyInsurance(
                         resultSet.getInt(1),
                         resultSet.getString("insured_first_name"),
                         resultSet.getString("insured_last_name"))
                         .setCarBrand(resultSet.getString("car_brand"))
                         .setCarModel(resultSet.getString("car_model"))
                         .setLicensePlate(resultSet.getString("license_plate"));
-                propertyPolicyList.add(propertyPolicy);
+                propertyInsuranceList.add(propertyInsurance);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return propertyPolicyList;
+        return propertyInsuranceList;
     }
+
+
 }
 

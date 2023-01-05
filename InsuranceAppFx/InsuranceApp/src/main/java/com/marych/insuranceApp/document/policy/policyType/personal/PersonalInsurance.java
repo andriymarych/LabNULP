@@ -1,13 +1,13 @@
-package com.marych.insuranceApp.workClass.policyType;
+package com.marych.insuranceApp.document.policy.policyType.personal;
 
-public class PersonalPolicy {
+public class PersonalInsurance {
     private int policyId;
     private String firstName;
     private String lastName;
     private String address;
     private String birthDate;
 
-    public PersonalPolicy(int policyId, String firstName, String lastName) {
+    public PersonalInsurance(int policyId, String firstName, String lastName) {
         this.policyId = policyId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -17,7 +17,7 @@ public class PersonalPolicy {
         return policyId;
     }
 
-    public PersonalPolicy setPolicyId(int policyId) {
+    public PersonalInsurance setPolicyId(int policyId) {
         this.policyId = policyId;
         return this;
     }
@@ -26,7 +26,7 @@ public class PersonalPolicy {
         return firstName;
     }
 
-    public PersonalPolicy setFirstName(String firstName) {
+    public PersonalInsurance setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -35,7 +35,7 @@ public class PersonalPolicy {
         return lastName;
     }
 
-    public PersonalPolicy setLastName(String lastName) {
+    public PersonalInsurance setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -44,7 +44,7 @@ public class PersonalPolicy {
         return address;
     }
 
-    public PersonalPolicy setAddress(String address) {
+    public PersonalInsurance setAddress(String address) {
         this.address = address;
         return this;
     }
@@ -53,7 +53,7 @@ public class PersonalPolicy {
         return birthDate;
     }
 
-    public PersonalPolicy setBirthDate(String birthDate) {
+    public PersonalInsurance setBirthDate(String birthDate) {
         this.birthDate = birthDate;
         return this;
     }

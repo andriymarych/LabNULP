@@ -1,8 +1,7 @@
 package com.marych.insuranceApp.userInterface.derivativeMenu;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.workClass.InsurancePolicy;
+import com.marych.insuranceApp.document.policy.ObservableInsurancePolicy;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,33 +26,33 @@ public class FilterDerivativeController implements Initializable {
     @FXML
     private TextField derivativeNoField;
     @FXML
-    private TableView<InsurancePolicy> tableView;
+    private TableView<ObservableInsurancePolicy> tableView;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> policyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> policyId;
     @FXML
-    private TableColumn<InsurancePolicy, Boolean> compulsory;
+    private TableColumn<ObservableInsurancePolicy, Boolean> compulsory;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> companyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> companyId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insuredId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insuredId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insurerId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insurerId;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredSum;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredSum;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredPayment;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredPayment;
     @FXML
-    private TableColumn<InsurancePolicy, String> signDate;
+    private TableColumn<ObservableInsurancePolicy, String> signDate;
     @FXML
-    private TableColumn<InsurancePolicy, Short> riskPercentage;
+    private TableColumn<ObservableInsurancePolicy, Short> riskPercentage;
     @FXML
-    private TableColumn<InsurancePolicy, Short> infoType;
+    private TableColumn<ObservableInsurancePolicy, Short> infoType;
     @FXML
     private TextField startSumField;
     @FXML
     private TextField endSumField;
 
-    private ObservableList<InsurancePolicy> policyList;
+    private ObservableList<ObservableInsurancePolicy> policyList;
 
 
     @Override

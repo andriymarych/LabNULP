@@ -1,6 +1,6 @@
-package com.marych.insuranceApp.workClass.policyType;
+package com.marych.insuranceApp.document.policy.policyType.property;
 
-public class PropertyPolicy {
+public class PropertyInsurance {
     private int policyId;
     private String firstName;
     private String lastName;
@@ -8,7 +8,7 @@ public class PropertyPolicy {
     private String carModel;
     private String licensePlate;
 
-    public PropertyPolicy(int policyId, String firstName, String lastName) {
+    public PropertyInsurance(int policyId, String firstName, String lastName) {
         this.policyId = policyId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -18,7 +18,7 @@ public class PropertyPolicy {
         return policyId;
     }
 
-    public PropertyPolicy setPolicyId(int policyId) {
+    public PropertyInsurance setPolicyId(int policyId) {
         this.policyId = policyId;
         return this;
     }
@@ -27,7 +27,7 @@ public class PropertyPolicy {
         return firstName;
     }
 
-    public PropertyPolicy setFirstName(String firstName) {
+    public PropertyInsurance setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -36,7 +36,7 @@ public class PropertyPolicy {
         return lastName;
     }
 
-    public PropertyPolicy setLastName(String lastName) {
+    public PropertyInsurance setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -45,7 +45,7 @@ public class PropertyPolicy {
         return carBrand;
     }
 
-    public PropertyPolicy setCarBrand(String carBrand) {
+    public PropertyInsurance setCarBrand(String carBrand) {
         this.carBrand = carBrand;
         return this;
     }
@@ -54,7 +54,7 @@ public class PropertyPolicy {
         return carModel;
     }
 
-    public PropertyPolicy setCarModel(String carModel) {
+    public PropertyInsurance setCarModel(String carModel) {
         this.carModel = carModel;
         return this;
     }
@@ -64,7 +64,7 @@ public class PropertyPolicy {
 
     }
 
-    public PropertyPolicy setLicensePlate(String licensePlate) {
+    public PropertyInsurance setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
         return this;
     }

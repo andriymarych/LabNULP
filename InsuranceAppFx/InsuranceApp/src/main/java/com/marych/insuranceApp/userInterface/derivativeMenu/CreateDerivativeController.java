@@ -1,10 +1,9 @@
 package com.marych.insuranceApp.userInterface.derivativeMenu;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.userInterface.insuranceMenu.policyCreation.insurancePolicies.InsurancePolicyDaoSender;
-import com.marych.insuranceApp.utils.AppData;
-import com.marych.insuranceApp.workClass.InsurancePolicy;
+import com.marych.insuranceApp.user.UserSession;
+import com.marych.insuranceApp.service.information.AppData;
+import com.marych.insuranceApp.document.policy.ObservableInsurancePolicy;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -30,26 +28,26 @@ import java.util.ResourceBundle;
 public class CreateDerivativeController implements Initializable {
 
     @FXML
-    private TableView<InsurancePolicy> tableView;
+    private TableView<ObservableInsurancePolicy> tableView;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> policyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> policyId;
     @FXML
-    private TableColumn<InsurancePolicy, Boolean> compulsory;
+    private TableColumn<ObservableInsurancePolicy, Boolean> compulsory;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> companyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> companyId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insuredId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insuredId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insurerId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insurerId;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredSum;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredSum;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredPayment;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredPayment;
     @FXML
-    private TableColumn<InsurancePolicy, String> signDate;
+    private TableColumn<ObservableInsurancePolicy, String> signDate;
     @FXML
-    private TableColumn<InsurancePolicy, Short> infoType;
-    private ObservableList<InsurancePolicy> policyList;
+    private TableColumn<ObservableInsurancePolicy, Short> infoType;
+    private ObservableList<ObservableInsurancePolicy> policyList;
     @FXML
     private ChoiceBox<String> insuranceSpecialists;
     @FXML
@@ -64,15 +62,15 @@ public class CreateDerivativeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         insuranceSpecialists.getItems().addAll(getInsuranceSpecialists());
-        policyId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Integer>("policyId"));
-        compulsory.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Boolean>("compulsory"));
-        insuredId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Integer>("holderId"));
-        insurerId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Integer>("insurerId"));
-        companyId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Integer>("companyId"));
-        insuredSum.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Double>("insuredSum"));
-        insuredPayment.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Double>("insuredPayment"));
-        signDate.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, String>("signDate"));
-        infoType.setCellValueFactory(new PropertyValueFactory<InsurancePolicy, Short>("infoType"));
+        policyId.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Integer>("policyId"));
+        compulsory.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Boolean>("compulsory"));
+        insuredId.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Integer>("holderId"));
+        insurerId.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Integer>("insurerId"));
+        companyId.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Integer>("companyId"));
+        insuredSum.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Double>("insuredSum"));
+        insuredPayment.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Double>("insuredPayment"));
+        signDate.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, String>("signDate"));
+        infoType.setCellValueFactory(new PropertyValueFactory<ObservableInsurancePolicy, Short>("infoType"));
         policyList = DatabaseHandler.getInstance().getInsurancePolicyData(UserSession.getInstance().getUserId());
         tableView.setItems(policyList);
     }

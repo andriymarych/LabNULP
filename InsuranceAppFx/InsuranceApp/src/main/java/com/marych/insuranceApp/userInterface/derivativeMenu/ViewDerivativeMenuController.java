@@ -1,6 +1,5 @@
 package com.marych.insuranceApp.userInterface.derivativeMenu;
 
-import com.marych.insuranceApp.utils.AppData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

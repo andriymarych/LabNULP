@@ -1,6 +1,6 @@
-package com.marych.insuranceApp.workClass;
+package com.marych.insuranceApp.document.policy;
 
-public class InsurancePolicy {
+public abstract class InsurancePolicy {
     private int policyId;
     private boolean compulsory;
     private int holderId;

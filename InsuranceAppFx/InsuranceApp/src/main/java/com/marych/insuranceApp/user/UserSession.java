@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.session;
+package com.marych.insuranceApp.user;
 
 public class  UserSession {
     private static UserSession instance;
@@ -31,11 +31,4 @@ public class  UserSession {
         return login;
     }
 
-    public int getDiiaId() {
-        return diiaId;
-    }
-
-    public void setDiiaId(int diiaId) {
-        this.diiaId = diiaId;
-    }
 }

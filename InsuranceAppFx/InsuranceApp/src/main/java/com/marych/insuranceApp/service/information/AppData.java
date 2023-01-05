@@ -1,6 +1,5 @@
-package com.marych.insuranceApp.utils;
+package com.marych.insuranceApp.service.information;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 

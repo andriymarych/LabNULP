@@ -1,9 +1,9 @@
 package com.marych.insuranceApp.userInterface.loginMenu;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.utils.AppData;
-import com.marych.insuranceApp.utils.DiiaCopy;
-import com.marych.insuranceApp.utils.EmailValidation;
+import com.marych.insuranceApp.service.information.AppData;
+import com.marych.insuranceApp.service.diia.DiiaCopy;
+import com.marych.insuranceApp.service.validation.EmailValidation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,15 +12,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Objects;
 
 public class SignUpController {
@@ -46,8 +41,12 @@ public class SignUpController {
             errorLabel.setText("Ви ввели невірний email");
         } else {
             addUserData();
-            loadMainWindow(event);
+            loadWindow(event,"../mainMenu/MainScene.fxml");
         }
+    }
+    @FXML
+    private void returnButton(ActionEvent event){
+        loadWindow(event,"../loginMenu/DiiaSignUpScene.fxml");
     }
 
     private void addUserData() {
@@ -69,9 +68,9 @@ public class SignUpController {
         DatabaseHandler.getInstance().execUpdate(query);
     }
 
-    private void loadMainWindow(ActionEvent event) {
+    private void loadWindow(ActionEvent event,String name) {
         try {
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("../mainMenu/MainScene.fxml")));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(name)));
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);

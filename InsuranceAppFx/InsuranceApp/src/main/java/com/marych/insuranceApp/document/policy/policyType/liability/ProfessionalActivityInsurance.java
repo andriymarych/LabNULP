@@ -1,6 +1,6 @@
-package com.marych.insuranceApp.workClass.policyType;
+package com.marych.insuranceApp.document.policy.policyType.liability;
 
-public class LiabilityPolicy {
+public class ProfessionalActivityInsurance /*extends LiabilityInsurance */{
     private int policyId;
     private String firstName;
     private String lastName;
@@ -8,18 +8,22 @@ public class LiabilityPolicy {
     private String professionalActivity;
     private String position;
 
-    public LiabilityPolicy(int policyId, String firstName, String lastName, String companyName) {
+    public ProfessionalActivityInsurance(int policyId, String firstName, String lastName, String companyName) {
         this.policyId = policyId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyName = companyName;
     }
+ /*   public ProfessionalActivityInsurance(int policyId, boolean compulsory, int holderId, int insurerId, int companyId) {
+        super(policyId,compulsory,holderId,insurerId,companyId);
+        this.policyId = policyId;
 
+    }*/
     public int getPolicyId() {
         return policyId;
     }
 
-    public LiabilityPolicy setPolicyId(int policyId) {
+    public ProfessionalActivityInsurance setPolicyId(int policyId) {
         this.policyId = policyId;
         return this;
     }
@@ -28,7 +32,7 @@ public class LiabilityPolicy {
         return firstName;
     }
 
-    public LiabilityPolicy setFirstName(String firstName) {
+    public ProfessionalActivityInsurance setFirstName(String firstName) {
         this.firstName = firstName;
         return this;
     }
@@ -37,7 +41,7 @@ public class LiabilityPolicy {
         return lastName;
     }
 
-    public LiabilityPolicy setLastName(String lastName) {
+    public ProfessionalActivityInsurance setLastName(String lastName) {
         this.lastName = lastName;
         return this;
     }
@@ -46,7 +50,7 @@ public class LiabilityPolicy {
         return companyName;
     }
 
-    public LiabilityPolicy setCompanyName(String companyName) {
+    public ProfessionalActivityInsurance setCompanyName(String companyName) {
         this.companyName = companyName;
         return this;
     }
@@ -55,7 +59,7 @@ public class LiabilityPolicy {
         return professionalActivity;
     }
 
-    public LiabilityPolicy setProfessionalActivity(String professionalActivity) {
+    public ProfessionalActivityInsurance setProfessionalActivity(String professionalActivity) {
         this.professionalActivity = professionalActivity;
         return this;
     }
@@ -64,7 +68,7 @@ public class LiabilityPolicy {
         return position;
     }
 
-    public LiabilityPolicy setPosition(String position) {
+    public ProfessionalActivityInsurance setPosition(String position) {
         this.position = position;
         return this;
     }

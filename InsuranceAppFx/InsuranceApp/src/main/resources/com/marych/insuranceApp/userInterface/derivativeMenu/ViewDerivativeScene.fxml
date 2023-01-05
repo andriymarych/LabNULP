@@ -38,10 +38,9 @@
          </columns>
       </TableView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2ea365" height="163.0" layoutX="295.0" layoutY="376.0" stroke="#43ba7b" strokeType="INSIDE" style="-fx-arc-height: 45; -fx-arc-width: 45;" width="405.0" />
-      <TableView fx:id="policyListView" layoutX="311.0" layoutY="406.0" prefHeight="117.0" prefWidth="372.0">
+      <TableView fx:id="policyListView" layoutX="358.0" layoutY="409.0" prefHeight="117.0" prefWidth="284.0">
          <columns>
-            <TableColumn fx:id="derivativeViewId" prefWidth="183.26144409179688" text="Номер Деривативу" />
-            <TableColumn fx:id="policyViewId" prefWidth="175.5" text="Номер Страхового договору" />
+            <TableColumn fx:id="policyViewId" prefWidth="272.0" text="Номер Страхового договору" />
          </columns>
       </TableView>
       <TextField fx:id="derivativeNoField" alignment="CENTER" layoutX="115.0" layoutY="397.0" prefHeight="39.0" prefWidth="171.0" promptText="Номер Деривативу" style="-fx-background-radius: 14;">

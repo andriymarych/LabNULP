@@ -1,4 +1,4 @@
-package com.marych.insuranceApp.utils;
+package com.marych.insuranceApp.service.diia;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
 

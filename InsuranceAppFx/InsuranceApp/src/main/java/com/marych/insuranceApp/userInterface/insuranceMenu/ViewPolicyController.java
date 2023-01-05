@@ -1,8 +1,9 @@
 package com.marych.insuranceApp.userInterface.insuranceMenu;
 
 import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.workClass.InsurancePolicy;
+import com.marych.insuranceApp.user.UserSession;
+import com.marych.insuranceApp.service.information.AppData;
+import com.marych.insuranceApp.document.policy.ObservableInsurancePolicy;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,60 +19,76 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class ViewPolicyController implements Initializable {
 
     @FXML
-    private TableView<InsurancePolicy> tableView;
+    private TableView<ObservableInsurancePolicy> tableView;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> policyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> policyId;
     @FXML
-    private TableColumn<InsurancePolicy, Boolean> compulsory;
+    private TableColumn<ObservableInsurancePolicy, Boolean> compulsory;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> companyId;
+    private TableColumn<ObservableInsurancePolicy, Integer> companyId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insuredId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insuredId;
     @FXML
-    private TableColumn<InsurancePolicy, Integer> insurerId;
+    private TableColumn<ObservableInsurancePolicy, Integer> insurerId;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredSum;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredSum;
     @FXML
-    private TableColumn<InsurancePolicy, Double> insuredPayment;
+    private TableColumn<ObservableInsurancePolicy, Double> insuredPayment;
     @FXML
-    private TableColumn<InsurancePolicy, String> signDate;
+    private TableColumn<ObservableInsurancePolicy, String> signDate;
     @FXML
-    private TableColumn<InsurancePolicy, Short> riskPercentage;
+    private TableColumn<ObservableInsurancePolicy, Short> riskPercentage;
     @FXML
-    private TableColumn<InsurancePolicy, Short> infoType;
-    private ObservableList<InsurancePolicy> policyList;
+    private TableColumn<ObservableInsurancePolicy, Short> infoType;
+    private ObservableList<ObservableInsurancePolicy> policyList;
+    private StringBuilder policiesNoString = new StringBuilder();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        policyId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Integer>("policyId"));
-        compulsory.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Boolean>("compulsory"));
-        insuredId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Integer>("holderId"));
-        insurerId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Integer>("insurerId"));
-        companyId.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Integer>("companyId"));
-        insuredSum.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Double>("insuredSum"));
-        insuredPayment.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Double>("insuredPayment"));
-        signDate.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,String>("signDate"));
-        riskPercentage.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Short>("riskPercentage"));
-        infoType.setCellValueFactory(new PropertyValueFactory<InsurancePolicy,Short>("infoType"));
+        policyId.setCellValueFactory(new PropertyValueFactory<>("policyId"));
+        compulsory.setCellValueFactory(new PropertyValueFactory<>("compulsory"));
+        insuredId.setCellValueFactory(new PropertyValueFactory<>("holderId"));
+        insurerId.setCellValueFactory(new PropertyValueFactory<>("insurerId"));
+        companyId.setCellValueFactory(new PropertyValueFactory<>("companyId"));
+        insuredSum.setCellValueFactory(new PropertyValueFactory<>("insuredSum"));
+        insuredPayment.setCellValueFactory(new PropertyValueFactory<>("insuredPayment"));
+        signDate.setCellValueFactory(new PropertyValueFactory<>("signDate"));
+        riskPercentage.setCellValueFactory(new PropertyValueFactory<>("riskPercentage"));
+        infoType.setCellValueFactory(new PropertyValueFactory<>("infoType"));
         policyList = DatabaseHandler.getInstance().getInsurancePolicyData(UserSession.getInstance().getUserId());
         tableView.setItems(policyList);
 
     }
+
     @FXML
     private void returnButton(ActionEvent event) {
-        loadWindow(event,"../insuranceMenu/PolicyMenuScene.fxml");
+        loadWindow(event, "../insuranceMenu/PolicyMenuScene.fxml");
     }
+
     @FXML
     private void viewDetailsButton(ActionEvent event) {
-        loadWindow(event,"../insuranceMenu/ViewPolicyDetailsScene.fxml");
+        loadWindow(event, "../insuranceMenu/ViewPolicyDetailsScene.fxml");
     }
+
+    @FXML
+    private void addToComparison(ActionEvent event) {
+        ObservableList<ObservableInsurancePolicy> comparisonViewList;
+        comparisonViewList = tableView.getSelectionModel().getSelectedItems();
+        policiesNoString.append(comparisonViewList.get(0).getPolicyId()).append(" ");
+    }
+
+    @FXML
+    private void showComparison(ActionEvent event) {
+        AppData.getInstance().put("PolicyComparisonNo",policiesNoString.toString().trim());
+        loadWindow(event, "../insuranceMenu/ComparisonScene.fxml");
+    }
+
     private void loadWindow(ActionEvent event, String name) {
         try {
             FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(getClass().getResource(name)));

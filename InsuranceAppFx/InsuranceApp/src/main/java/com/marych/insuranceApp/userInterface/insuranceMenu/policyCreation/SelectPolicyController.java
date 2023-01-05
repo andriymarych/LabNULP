@@ -1,7 +1,6 @@
 package com.marych.insuranceApp.userInterface.insuranceMenu.policyCreation;
 
-import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.utils.AppData;
+import com.marych.insuranceApp.service.information.AppData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,9 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 

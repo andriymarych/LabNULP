@@ -1,8 +1,7 @@
 package com.marych.insuranceApp.userInterface.main;
 
-import com.marych.insuranceApp.dao.DatabaseHandler;
-import com.marych.insuranceApp.session.UserSession;
-import com.marych.insuranceApp.utils.AppLogger;
+import com.marych.insuranceApp.user.UserSession;
+import com.marych.insuranceApp.service.information.AppLogger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -23,8 +22,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -69,6 +66,7 @@ public class MainController implements Initializable {
         alert.setHeaderText("Схоже на те, що ви хочете вийти");
         alert.setContentText("Ви дійсно бажаєте вийти?");
         if(alert.showAndWait().get() == ButtonType.OK){
+            AppLogger.info("User "+ UserSession.getInstance().getLogin()+ "(id"+ UserSession.getInstance().getUserId() + ") is logged out");
             Stage stage = (Stage) exitButton.getScene().getWindow();
             stage.close();
         }
